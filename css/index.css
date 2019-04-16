@@ -2,3 +2,7 @@ html {
 	overflow-y: scroll;
 	scroll-behavior: smooth;
 }
+
+body {
+	background-color: #111111
+}
