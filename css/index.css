@@ -56,8 +56,15 @@ body {
 	margin: 32px;
 
 	color: #aaaaaa;
-	
+
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     text-align: justify;
+}
+
+#google-review, .hyperlink {
+	color: #aaaaaa;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
 }
