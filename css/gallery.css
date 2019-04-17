@@ -1,0 +1,9 @@
+.photo {
+    display: inline;
+    vertical-align: top;
+
+    width: 22%;
+    height: auto;
+
+    margin: 10px; 
+}

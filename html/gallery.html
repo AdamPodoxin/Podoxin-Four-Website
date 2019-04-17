@@ -4,8 +4,11 @@
 	<title>Gallery - Podoxin Four</title>
 
     <link rel="stylesheet" type="text/css" media="screen" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/gallery.css">
+
+    <script type="text/javascript" src="../js/gallery.js"></script>
 </head>
-<body>
+<body onload="LoadImages();">
 	<div id="navbar">
 		<a href="index.html">HOME</a>
 		<a href="movie.html">MOVIE</a>
@@ -16,5 +19,13 @@
 	</div>
 
 	<h1 id="page-title">Gallery</h1>
+
+	<center>
+		<div id="gallery"></div>
+
+		<br>
+
+		<a href="#navbar" id="about" class="hyperlink">Back to top</a>
+	</center>
 </body>
 </html>

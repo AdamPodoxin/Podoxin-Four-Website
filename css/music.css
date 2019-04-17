@@ -1,0 +1,8 @@
+.video {
+	display: inline-table;
+
+	width: 560px;
+	height: 315px;
+
+	margin: 24px;
+}
