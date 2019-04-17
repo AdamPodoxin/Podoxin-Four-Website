@@ -70,7 +70,27 @@ body {
     text-align: justify;
 }
 
-#google-review, .hyperlink {
+#google-review {
+    width: 184px;
+
+	margin: 16px;
+    padding: 12px;
+
+    background-image: linear-gradient(#4b84ed, #124299);
+    border-radius: 6px;
+}
+
+#google-review-link {
+	text-decoration: none;
+}
+
+#google-review span {
+    color: white;
+    font-family: "Product Sans", sans-serif;
+    font-size: 20px;
+}
+
+.hyperlink {
 	color: #aaaaaa;
 
     font-family: "Montserrat", sans-serif;
