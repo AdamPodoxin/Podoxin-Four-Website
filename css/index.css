@@ -35,9 +35,17 @@ body {
 	margin-right: 16px;
 }
 
+#navbar a:hover {
+	color: #dddddd;
+}
+
+#navbar a:active {
+	color: #dddddd;
+}
+
 #navbar #current-page {
 	text-decoration: underline;
-	color: #eeeeee;
+	color: #dddddd;
 }
 
 #page-title {
