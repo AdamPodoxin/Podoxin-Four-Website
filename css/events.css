@@ -34,6 +34,7 @@ td {
 }
 
 .no-events {
+	display: block;
 	width: 1120px;
 	margin: 32px;
 
@@ -42,4 +43,11 @@ td {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     text-align: center;
+}
+
+/* Mobile styling */
+@media only screen and (max-width: 1280px) {
+	.no-events {
+		width: 95%;
+	}
 }

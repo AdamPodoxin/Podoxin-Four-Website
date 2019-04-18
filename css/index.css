@@ -2,6 +2,7 @@
 
 html {
 	overflow-y: scroll;
+	overflow-x: none;
 	scroll-behavior: smooth;
 }
 
@@ -46,6 +47,11 @@ body {
 #navbar #current-page {
 	text-decoration: underline;
 	color: #dddddd;
+}
+
+#navbar-spacer {
+	display: block;
+	margin: 0;
 }
 
 #page-title {
@@ -99,4 +105,21 @@ body {
 
 .hyperlink:hover, .hyperlink:active {
 	color: #dddddd;
+}
+
+/* Mobile styling */
+@media only screen and (max-width: 1280px) {
+	#navbar-spacer {
+		margin: 100px;
+	}
+
+	#page-title {
+		display: none;
+	}
+
+	#about {
+		width: 95%;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }

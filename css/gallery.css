@@ -9,3 +9,11 @@
 
     border-radius: 8px;
 }
+
+/* Mobile styling */
+@media only screen and (max-width: 1280px) {
+	.photo {
+		width: 95%;
+		height: auto;
+	}
+}

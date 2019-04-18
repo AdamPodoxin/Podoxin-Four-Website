@@ -8,3 +8,12 @@
 
 	border: 1px solid #555555;
 }
+
+/* Mobile styling */
+@media only screen and (max-width: 1280px) {
+	.video {
+		width: 95%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
