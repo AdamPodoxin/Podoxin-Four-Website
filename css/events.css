@@ -8,16 +8,16 @@ th, td {
 	padding: 12px;
 
 	text-align: left;
-
-	color: #dddddd;
 }
 
 th {
+	color: #dddddd;
 	font-family: "Oswald", sans-serif;
 	font-size: 26px;
 }
 
 td {
+	color: #aaaaaa;
 	font-family: "Montserrat", sans-serif;
 	font-size: 20px;
 }
@@ -31,4 +31,15 @@ td {
 
 	font-family: "Oswald", sans-serif;
 	font-size: 40px;
+}
+
+.no-events {
+	width: 1120px;
+	margin: 32px;
+
+	color: #aaaaaa;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    text-align: center;
 }
