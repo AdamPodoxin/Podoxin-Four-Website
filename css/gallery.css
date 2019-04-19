@@ -26,6 +26,10 @@
     background-color: rgba(40, 40, 40, 0.7);
 }
 
+#about {
+    font-size: 56px;
+}
+
 .photo {
     display: inline;
     vertical-align: top;
