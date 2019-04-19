@@ -1,15 +1,11 @@
 #modal {
     position: fixed;
-    display: none;
-
-    transform: scale(0.5);
+    width: 50%;
 
     top: 50%;
-    bottom: 50%;
-    right: 0;
-    left: 0;
+    left: 50%;
 
-    margin: auto;
+    transform: translate(-50%, -50%);
 }
 
 #modalbg {
@@ -55,8 +51,9 @@
 		height: auto;
 	}
 
-    #modal {
-        transform: scale(0.9);
-        width: 100%;
+    .photo:hover {
+        border: none;
+        margin: 10px;
+        cursor: default;
     }
 }

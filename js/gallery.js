@@ -11,9 +11,12 @@ function LoadImages() {
 		var imgName = "000" + (i + 1);
 		imgName = imgName.substring(imgName.length - 3, imgName.length);
 
-		imageElement.onclick = function() { OpenModal(this); };
 		imageElement.src = src + imgName + ".jpg";
 		imageElement.className = "photo";
+
+		if(window.innerWidth > 1280) {
+			imageElement.onclick = function() { OpenModal(this); };
+		}
 	}
 }
 
@@ -30,4 +33,5 @@ function CloseModal() {
 	modal.style.display = "none";
 	modalbg.style.display = "none";
 
-	document.documentElement.style.overflowY = "scroll"; }
+	document.documentElement.style.overflowY = "scroll";
+}
