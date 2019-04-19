@@ -1,14 +1,14 @@
-let amountOfImages = 68;
+var amountOfImages = 68;
 
 function LoadImages() {
-	const galleryDiv = document.getElementById("gallery");
-	const src = "../img/gallery/";
+	var galleryDiv = document.getElementById("gallery");
+	var src = "../img/gallery/";
 
-	for(let i = 0; i < amountOfImages; i++) {
-		let imageElement = document.createElement("img");
+	for(var i = 0; i < amountOfImages; i++) {
+		var imageElement = document.createElement("img");
 		galleryDiv.appendChild(imageElement);
 
-		let imgName = "000" + (i + 1);
+		var imgName = "000" + (i + 1);
 		imgName = imgName.substring(imgName.length - 3, imgName.length);
 
 		imageElement.src = src + imgName + ".jpg";
