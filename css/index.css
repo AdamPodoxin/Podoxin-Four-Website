@@ -109,6 +109,10 @@ body {
 
 /* Mobile styling */
 @media only screen and (max-width: 1280px) {
+	html {
+		scroll-behavior: auto;
+	}
+
 	#navbar-spacer {
 		margin: 100px;
 	}
