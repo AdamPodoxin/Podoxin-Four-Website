@@ -1,3 +1,35 @@
+#modal {
+    position: fixed;
+    display: none;
+
+    transform: scale(0.5);
+
+    top: 50%;
+    bottom: 50%;
+    right: 0;
+    left: 0;
+
+    margin: auto;
+}
+
+#modalbg {
+    position: fixed;
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    margin: 0;
+    padding: 0;
+
+    background-color: rgba(40, 40, 40, 0.7);
+}
+
 .photo {
     display: inline;
     vertical-align: top;
@@ -8,6 +40,12 @@
     margin: 10px;
 
     border-radius: 8px;
+}
+
+.photo:hover {
+    border: 1px solid #555555;
+    margin: 9px;
+    cursor: pointer;
 }
 
 /* Mobile styling */
