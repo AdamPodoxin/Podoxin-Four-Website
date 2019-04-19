@@ -54,4 +54,9 @@
 		width: 95%;
 		height: auto;
 	}
+
+    #modal {
+        transform: scale(0.9);
+        width: 100%;
+    }
 }
