@@ -1,6 +1,26 @@
+#prev, #next {
+    position: fixed;
+    top: 50%;
+}
+
+#prev {
+    left: 30%;
+}
+
+#next {
+    left: 70%;
+}
+
+#close {
+    position: fixed;
+
+    top: 1%;
+    right: 1%;
+}
+
 #modal {
     position: fixed;
-    width: 50%;
+    width: 35%;
 
     top: 50%;
     left: 50%;

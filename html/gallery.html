@@ -26,9 +26,15 @@
 	<h1 id="page-title">Gallery</h1>
 
 	<center>
+		<span id="modalbg">
+			<button type="button" onclick="CloseModal();" id="close">X</button>
+			<button type="button" onclick="ChangeImage(-1);" id="prev"><</button>
+			<button type="button" onclick="ChangeImage(1);" id="next">></button>
+		</span>
+
+		<img id="modal" onclick="CloseModal();">
+
 		<div id="gallery">
-			<span id="modalbg" onclick="CloseModal();"></span>
-			<img id="modal" onclick="CloseModal();">
 		</div>
 
 		<br>

@@ -1,4 +1,5 @@
 var amountOfImages = 68;
+var currentImageIndex;
 
 function LoadImages() {
 	var galleryDiv = document.getElementById("gallery");
@@ -25,6 +26,7 @@ function OpenModal(image) {
 	modalbg.style.display = "block";
 
 	modal.src = image.src;
+	currentImageIndex = parseInt(image.src.replace(/^.*[\\\/]/, '').replace('.jpg', ''));
 
 	document.documentElement.style.overflowY = "hidden";
 }
@@ -34,4 +36,13 @@ function CloseModal() {
 	modalbg.style.display = "none";
 
 	document.documentElement.style.overflowY = "scroll";
+}
+
+function ChangeImage(count) {
+	var newImageIndex = currentImageIndex - 1 + count;
+
+	if(newImageIndex >= 0 && newImageIndex < amountOfImages) {
+		modal.src = gallery.children[newImageIndex].src;
+		currentImageIndex += count;
+	}
 }
