@@ -46,10 +46,6 @@
     background-color: rgba(40, 40, 40, 0.7);
 }
 
-#about {
-    font-size: 56px;
-}
-
 .photo {
     display: inline;
     vertical-align: top;
@@ -70,6 +66,10 @@
 
 /* Mobile styling */
 @media only screen and (max-width: 1280px) {
+    #about {
+        font-size: 56px;
+    }
+
 	.photo {
 		width: 95%;
 		height: auto;
