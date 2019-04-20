@@ -4,11 +4,11 @@
 }
 
 #prev {
-    left: 30%;
+    left: 28%;
 }
 
 #next {
-    left: 70%;
+    right: 28%;
 }
 
 #close {
@@ -20,7 +20,7 @@
 
 #modal {
     position: fixed;
-    width: 35%;
+    height: 80%;
 
     top: 50%;
     left: 50%;

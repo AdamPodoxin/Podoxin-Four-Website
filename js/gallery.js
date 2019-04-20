@@ -28,6 +28,10 @@ function OpenModal(image) {
 	modal.src = image.src;
 	currentImageIndex = parseInt(image.src.replace(/^.*[\\\/]/, '').replace('.jpg', ''));
 
+	AdjustModalSize();
+	AdjustNavigationButtons();
+	console.log(modal.clientWidth);
+
 	document.documentElement.style.overflowY = "hidden";
 }
 
@@ -44,5 +48,25 @@ function ChangeImage(count) {
 	if(newImageIndex >= 0 && newImageIndex < amountOfImages) {
 		modal.src = gallery.children[newImageIndex].src;
 		currentImageIndex += count;
+
+		AdjustModalSize();
+		AdjustNavigationButtons();
 	}
+}
+
+function AdjustModalSize() {
+	if(modal.clientWidth > document.body.clientWidth * 0.8) {
+		modal.style.width = "80%";
+		modal.style.height = "auto";
+	} else if(modal.clientHeight > document.body.clientHeight * 0.8) {
+		modal.style.height = "80%";
+		modal.style.width = "auto";
+	}
+}
+
+function AdjustNavigationButtons() {
+	var distance = -0.025 * modal.clientWidth + 44.29;
+	distance = (-18 * modal.clientWidth + 47000) / 1201;
+	prev.style.left = distance + "%";
+	next.style.right = distance + "%";
 }
