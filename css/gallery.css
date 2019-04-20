@@ -3,14 +3,6 @@
     top: 50%;
 }
 
-#prev {
-    left: 28%;
-}
-
-#next {
-    right: 28%;
-}
-
 #close {
     position: fixed;
 
@@ -26,6 +18,8 @@
     left: 50%;
 
     transform: translate(-50%, -50%);
+
+    border-radius: 8px;
 }
 
 #modalbg {

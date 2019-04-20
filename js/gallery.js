@@ -30,7 +30,6 @@ function OpenModal(image) {
 
 	AdjustModalSize();
 	AdjustNavigationButtons();
-	console.log(modal.clientWidth);
 
 	document.documentElement.style.overflowY = "hidden";
 }
@@ -55,18 +54,19 @@ function ChangeImage(count) {
 }
 
 function AdjustModalSize() {
-	if(modal.clientWidth > document.body.clientWidth * 0.8) {
+	if(modal.clientWidth > window.innerWidth * 0.8) {
 		modal.style.width = "80%";
 		modal.style.height = "auto";
-	} else if(modal.clientHeight > document.body.clientHeight * 0.8) {
+	} 
+
+	if(modal.clientHeight > window.innerHeight * 0.8) {
 		modal.style.height = "80%";
 		modal.style.width = "auto";
 	}
 }
 
 function AdjustNavigationButtons() {
-	var distance = -0.025 * modal.clientWidth + 44.29;
-	distance = (-18 * modal.clientWidth + 47000) / 1201;
-	prev.style.left = distance + "%";
-	next.style.right = distance + "%";
+	var distance = (window.innerWidth - modal.clientWidth) / 2 - 50;
+	prev.style.left = distance + "px";
+	next.style.right = distance + "px";
 }
