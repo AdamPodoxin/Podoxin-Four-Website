@@ -26,7 +26,7 @@ function OpenModal(image) {
 	modalbg.style.display = "block";
 
 	modal.src = image.src;
-	currentImageIndex = parseInt(image.src.replace(/^.*[\\\/]/, '').replace('.jpg', ''));
+	currentImageIndex = parseInt(image.src.replace(/^.*[\\\/]/, '').replace('.jpg', '')) - 1;
 
 	AdjustModalSize();
 	AdjustNavigationButtons();
@@ -42,11 +42,18 @@ function CloseModal() {
 }
 
 function ChangeImage(count) {
-	var newImageIndex = currentImageIndex - 1 + count;
+	var newImageIndex = currentImageIndex + count;
+
+	if(newImageIndex >= amountOfImages) {
+		newImageIndex = 0;
+	} else if(newImageIndex < 0) {
+		newImageIndex = amountOfImages - 1;
+	}
+	console.log(newImageIndex);
 
 	if(newImageIndex >= 0 && newImageIndex < amountOfImages) {
 		modal.src = gallery.children[newImageIndex].src;
-		currentImageIndex += count;
+		currentImageIndex = newImageIndex;
 
 		AdjustModalSize();
 		AdjustNavigationButtons();
