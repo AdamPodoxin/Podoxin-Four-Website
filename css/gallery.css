@@ -3,6 +3,10 @@
     top: 50%;
 }
 
+#prev img, #next img {
+    position: absolute;
+}
+
 #close {
     position: fixed;
 
