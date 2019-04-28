@@ -49,11 +49,6 @@ body {
 	color: #dddddd;
 }
 
-#navbar-spacer {
-	display: block;
-	margin: 0;
-}
-
 #page-title {
 	text-align: center;
 
@@ -111,10 +106,6 @@ body {
 @media only screen and (max-width: 1280px) {
 	html {
 		scroll-behavior: auto;
-	}
-
-	#navbar-spacer {
-		margin: 100px;
 	}
 
 	#page-title {
