@@ -171,4 +171,14 @@ body {
 
 		font-size: 28px;
 	}
+
+	#google-review {
+		width: 368px;
+
+		border-radius: 12px;
+	}
+
+	#google-review span {
+		font-size: 36px;
+	}
 }
