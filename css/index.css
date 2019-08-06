@@ -173,12 +173,12 @@ body {
 	}
 
 	#google-review {
-		width: 368px;
+		width: 600px;
 
 		border-radius: 12px;
 	}
 
 	#google-review span {
-		font-size: 36px;
+		font-size: 64px;
 	}
 }
