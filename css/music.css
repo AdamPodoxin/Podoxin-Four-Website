@@ -9,6 +9,11 @@
 	border: 1px solid #555555;
 }
 
+.video-small {
+	width: 128px;
+	height: 72px;
+}
+
 /* Mobile styling */
 @media only screen and (max-width: 1280px) {
 	.video {

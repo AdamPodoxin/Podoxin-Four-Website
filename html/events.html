@@ -5,12 +5,12 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="../css/index.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/events.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/music.css">
 
     <link rel="shortcut icon" href="../img/favicon.png">
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript" src="../js/events.js"></script>
 
     <meta charset="utf-8">
     <meta property="og:type" content="Music Band">
@@ -64,18 +64,22 @@
 				<tr>
 					<td>2019, August 29</td>
 					<td><a href="https://www.portcoquitlamfarmersmarket.org/" target="_blank" class="hyperlink">PoCo Farmers Market</a>, Port Coquitlam, BC</td>
+					<td><img src="../img/yt_icon_rgb.png" width="46px" height="32px" onclick="OpenModal('');"></td>
 				</tr>
 				<tr>
 					<td>2019, August 18</td>
 					<td><a href="https://maps.app.goo.gl/NSwWk1c8ruGxEMtt5" target="_blank" class="hyperlink">Newport Village</a>, Port Moody, BC</td>
+					<td><img src="../img/yt_icon_rgb.png" width="46px" height="32px" onclick="OpenModal('ohH3-6RsvJU');"></td>
 				</tr>
 				<tr>
 					<td>2019, July 14</td>
 					<td><a href="https://www.portmoody.ca/en/recreation-parks-and-environment/rocky-point-park.aspx" target="_blank" class="hyperlink">Rocky Point Park</a>, Port Moody, BC</td>
+					<td><img src="../img/yt_icon_rgb.png" width="46px" height="32px" onclick="OpenModal('g6mtpP8PLz8');"></td>
 				</tr>
 				<tr>
 					<td>2019, June 22</td>
 					<td><a href="https://www.long-mcquade.com/lessons/British_Columbia/Port_Coquitlam/" target="_blank" class="hyperlink">Long & McQuade</a>, Port Coquitlam, BC</td>
+					<td><img src="../img/yt_icon_rgb.png" width="46px" height="32px" onclick="OpenModal('frrc9gxkRXE');"></td>
 				</tr>
 				<tr>
 					<td>2018, August 31</td>
@@ -101,12 +105,10 @@
 		</table>
 	</center>
 
-	<br><br><br><br><br><br><br><br>
+	<span id="modalbg">
+		<img src="../img/modal/close.png" width="40px" height="40px" id="close">
+	</span>
 
-	<center>
-        <iframe src="https://www.youtube.com/embed/g6mtpP8PLz8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="video"></iframe> <!--End-of-year drums recital at Long & McQuade, PoCo, BC (June 2019)-->
-		<iframe src="https://www.youtube.com/embed/frrc9gxkRXE?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="video"></iframe> <!--Rocky Point Park July 14 2019-->
-		<iframe src="https://www.youtube.com/embed/ohH3-6RsvJU?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="video"></iframe> <!--Newport Village August 18 2019-->
-	</center>
+	<iframe id="modal" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </body>
 </html>
