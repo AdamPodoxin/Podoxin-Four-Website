@@ -22,6 +22,10 @@ td {
 	font-size: 20px;
 }
 
+td img {
+    cursor: pointer;
+}
+
 .events-title {
 	text-align: center;
 
