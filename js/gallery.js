@@ -4,7 +4,7 @@ var currentImageIndex;
 function LoadImages() {
 	var src = "../img/gallery/";
 
-	for(var i = 0; i < amountOfImages; i++) {
+	for (var i = 0; i < amountOfImages; i++) {
 		var imageElement = document.createElement("img");
 		$("#gallery").append(imageElement);
 
@@ -40,13 +40,13 @@ function CloseModal() {
 function ChangeImage(count) {
 	var newImageIndex = currentImageIndex + count;
 
-	if(newImageIndex >= amountOfImages) {
+	if (newImageIndex >= amountOfImages) {
 		newImageIndex = 0;
-	} else if(newImageIndex < 0) {
+	} else if (newImageIndex < 0) {
 		newImageIndex = amountOfImages - 1;
 	}
 
-	if(newImageIndex >= 0 && newImageIndex < amountOfImages) {
+	if (newImageIndex >= 0 && newImageIndex < amountOfImages) {
 		$("#modal").attr("src", gallery.children[newImageIndex].src);
 		currentImageIndex = newImageIndex;
 
@@ -56,12 +56,12 @@ function ChangeImage(count) {
 }
 
 function AdjustModalSize() {
-	if($("#modal").attr("clientWidth") > window.innerWidth * 0.8) {
+	if ($("#modal").attr("clientWidth") > window.innerWidth * 0.8) {
 		$("#modal").css("width", "80%");
 		$("#modal").css("height", "auto");
-	} 
+	}
 
-	if($("#modal").attr("clientHeight") > window.innerHeight * 0.8) {
+	if ($("#modal").attr("clientHeight") > window.innerHeight * 0.8) {
 		$("#modal").css("height", "80%");
 		$("#modal").css("width", "auto");
 	}
@@ -73,28 +73,14 @@ function AdjustNavigationButtons() {
 	$("#next").css("right", distance + "px");
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 	LoadImages();
 
-	$("img").click(function(event) {
-		if(window.innerWidth >= 1280 && $(event.target).attr("class") == "photo") {
-			OpenModal(event.target);
-		}
-	});
-
-	$("#modal").click(function() {
-		CloseModal();
-	});
-
-	$("#close").click(function() {
-		CloseModal();
-	});
-
-	$("#prev").click(function() {
-		ChangeImage(-1);
-	});
-
-	$("#next").click(function() {
-		ChangeImage(1);
-	});
+	if (window.innerWidth >= 1280) {
+		$(".photo").click(function (event) { OpenModal(event.target); });
+		$("#modalbg").click(function () { CloseModal() });
+		$("#close").click(function () { CloseModal(); });
+		$("#prev").click(function () { ChangeImage(-1); });
+		$("#next").click(function () { ChangeImage(1); });
+	}
 });
