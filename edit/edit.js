@@ -23,7 +23,16 @@ function openTab(tabId) {
 function addEventsTr(finished, venue, date) {
     const firstChild = eventsTable.childNodes[0];
     const elementToAdd = $(eventsTrTemplate)[0];
+
     eventsTable.insertBefore(elementToAdd, firstChild);
+
+    const finishedInput = elementToAdd.childNodes[0].childNodes[0];
+    const venueInput = elementToAdd.childNodes[1].childNodes[0];
+    const dateInput = elementToAdd.childNodes[2].childNodes[0];
+
+    finishedInput.checked = finished;
+    venueInput.value = venue;
+    dateInput.value = date;
 }
 
 /*----------------------*/
