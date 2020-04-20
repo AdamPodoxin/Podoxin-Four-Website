@@ -1,14 +1,14 @@
 let tabs = [];
 
 var eventsTable;
-var generatedJSON;
+var jsonInput;
 
 const eventsTrTemplate = "<tr><td><input type='checkbox' name='finished'></td><td><input type='text' name='date'></td><td><input type='text' name='venue'></td><td><input type='text' name='venue-site'></td><td><input type='text' name='yt-id'></td></tr>";
 
 function onload() {
     tabs = document.getElementsByClassName("tab");
     eventsTable = document.getElementById("events-table");
-    generatedJSON = document.getElementById("generated-json");
+    jsonInput = document.getElementById("json");
 }
 
 function openTab(tabId) {
@@ -70,12 +70,21 @@ function generateEventsJSON() {
 
     const generatedJSONString = JSON.stringify(tableRowObjects);
 
-    generatedJSON.innerHTML = generatedJSONString;
-    generatedJSON.select();
-    generatedJSON.setSelectionRange(0, 99999);
+    jsonInput.value = generatedJSONString;
+    jsonInput.select();
+    jsonInput.setSelectionRange(0, 99999);
 
     document.execCommand("copy");
     alert("JSON copied to clipboard");
+}
+
+function loadEventsJSON() {
+    const jsonStr = jsonInput.value;
+    const jsonData = JSON.parse(jsonStr);
+
+    jsonData.reverse().forEach(eventTableRow => {
+        addEventsTr(eventTableRow.finished, eventTableRow.date, eventTableRow.venue, eventTableRow.venueSite, eventTableRow.ytId);
+    });
 }
 
 /*----------------------*/

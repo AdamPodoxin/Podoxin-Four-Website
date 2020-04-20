@@ -8,9 +8,3 @@ table, th, td {
 
     padding: 8px;
 }
-
-#generated-json {
-    border: none;
-    resize: none;
-    color: white;
-}

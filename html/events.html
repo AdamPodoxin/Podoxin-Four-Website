@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Events - Podoxin Four</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/index.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/events.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/events.css">
 
-    <link rel="shortcut icon" href="../img/favicon.png">
+	<link rel="shortcut icon" href="../img/favicon.png">
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="../js/index.js"></script>
-    <script type="text/javascript" src="../js/events.js"></script>
+	<script type="text/javascript" src="../js/index.js"></script>
+	<script type="text/javascript" src="../js/events.js"></script>
 
-    <meta charset="utf-8">
-    <meta property="og:type" content="Music Band">
-    <meta property="og:image" content="../img/favicon.png">
+	<meta charset="utf-8">
+	<meta property="og:type" content="Music Band">
+	<meta property="og:image" content="../img/favicon.png">
 	<meta property="og:image:type" content="image/png">
 	<meta property="og:image:width" content="512">
 	<meta property="og:image:height" content="512">
 	<meta name="Description" content="Smooth funk jazz quartet">
 </head>
+
 <body>
 	<div id="navbar">
 		<a href="../index.html">HOME</a>
@@ -38,7 +40,7 @@
 
 	<center>
 		<h1 class="events-title">Upcoming Events</h1>
-		<p class="no-events">Nothing to see here... yet.</p>
+		<p id="no-events">Nothing to see here... yet.</p>
 		<table>
 			<thead>
 				<tr>
@@ -46,7 +48,7 @@
 					<th>Venue</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="upcoming-events-body">
 			</tbody>
 		</table>
 
@@ -60,41 +62,7 @@
 					<th>Venue</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					<td>2019, August 29</td>
-					<td><a href="https://www.portcoquitlamfarmersmarket.org/" target="_blank" class="hyperlink">PoCo Farmers Market</a>, Port Coquitlam, BC</td>
-					<td><img src="../img/yt_icon_rgb.png" width="46px" height="32px" onclick="OpenModal('ZL_WOW5Gzpg');" title="Click to view video"></td>
-				</tr>
-				<tr>
-					<td>2019, August 18</td>
-					<td><a href="https://maps.app.goo.gl/NSwWk1c8ruGxEMtt5" target="_blank" class="hyperlink">Newport Village</a>, Port Moody, BC</td>
-					<td><img src="../img/yt_icon_rgb.png" width="46px" height="32px" onclick="OpenModal('TKq-EjCVCvA');" title="Click to view video"></td>
-				</tr>
-				<tr>
-					<td>2019, July 14</td>
-					<td><a href="https://www.portmoody.ca/en/recreation-parks-and-environment/rocky-point-park.aspx" target="_blank" class="hyperlink">Rocky Point Park</a>, Port Moody, BC</td>
-					<td><img src="../img/yt_icon_rgb.png" width="46px" height="32px" onclick="OpenModal('z97OM6f_j70');" title="Click to view video"></td>
-				</tr>
-				<tr>
-					<td>2019, June 22</td>
-					<td><a href="https://www.long-mcquade.com/lessons/British_Columbia/Port_Coquitlam/" target="_blank" class="hyperlink">Long & McQuade</a>, Port Coquitlam, BC</td>
-					<td><img src="../img/yt_icon_rgb.png" width="46px" height="32px" onclick="OpenModal('g6mtpP8PLz8');" title="Click to view video"></td>
-				</tr>
-				<tr>
-					<td>2018, August 31</td>
-					<td><a href="http://www.paranoyd.com/" target="_blank" class="hyperlink">Paranoyd Sound Studios</a>, Port Moody, BC</td>
-					<td><img src="../img/yt_icon_rgb.png" width="46px" height="32px" onclick="OpenModal('s4RTRFg2R-Y');" title="Click to view video"></td>
-				</tr>
-				<tr>
-					<td>2018, August 18</td>
-					<td><a href="http://www.paranoyd.com/" target="_blank" class="hyperlink">Paranoyd Sound Studios</a>, Port Moody, BC</td>
-					<td><img src="../img/yt_icon_rgb.png" width="46px" height="32px" onclick="OpenModal('PHn9-E8B9U4');" title="Click to view video"></td>
-				</tr>
-				<tr>
-					<td>2012-2015</td>
-					<td><a href="https://peretz-centre.org/" target="_blank" class="hyperlink">Peretz Centre</a>, Vancouver, BC</td>
-				</tr>
+			<tbody id="past-events-body">
 			</tbody>
 		</table>
 	</center>
@@ -105,4 +73,5 @@
 
 	<iframe id="modal" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </body>
+
 </html>
