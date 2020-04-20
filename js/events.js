@@ -1,7 +1,7 @@
 var windowWidth = window.innerWidth;
 
 $(document).ready(function () {
-    loadJsonData();
+    loadJSONData();
 
     var iframeWidth = windowWidth * 0.8;
     var iframeHeight = iframeWidth * 9 / 16;
@@ -14,7 +14,7 @@ $(document).ready(function () {
     });
 });
 
-function loadJsonData() {
+function loadJSONData() {
     $.ajax({
         url: "../json/events.json",
         dataType: "text",
