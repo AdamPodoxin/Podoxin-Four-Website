@@ -1,7 +1,7 @@
 let tabs = [];
 var eventsTable;
 
-const eventsTrTemplate = "<tr><td><input type='checkbox'></td><td><input type='text'></td><td><input type='text'></td></tr>";
+const eventsTrTemplate = "<tr><td><input type='checkbox' name='finished'></td><td><input type='text' name='venue'></td><td><input type='text' name='date'></td></tr>";
 
 function onload() {
     tabs = document.getElementsByClassName("tab");
@@ -17,5 +17,15 @@ function openTab(tabId) {
         }
     });
 }
+
+/*--------Events--------*/
+
+function addEventsTr(finished, venue, date) {
+    const firstChild = eventsTable.childNodes[0];
+    const elementToAdd = $(eventsTrTemplate)[0];
+    eventsTable.insertBefore(elementToAdd, firstChild);
+}
+
+/*----------------------*/
 
 window.onload = onload();
