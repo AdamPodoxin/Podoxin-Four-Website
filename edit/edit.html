@@ -16,6 +16,7 @@
     <div id="events" class="tab">
         <h1>Events</h1>
         <button onclick="addEventsTr(false, '', '')">Add</button>
+        <button onclick="generateEventsJSON()">Generate JSON</button>
 
         <br><br><br>
 
@@ -27,6 +28,10 @@
             </thead>
         </table>
     </div>
+
+    <br><br><br>
+
+    <textarea id="generated-json"></textarea>
 
     <script src="edit.js"></script>
 </body>
