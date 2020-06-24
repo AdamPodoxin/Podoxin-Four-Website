@@ -1,20 +1,26 @@
-var amountOfImages = 68;
 var currentImageIndex;
 
 function LoadImages() {
 	var src = "../img/gallery/";
 
-	for (var i = 0; i < amountOfImages; i++) {
-		var imageElement = document.createElement("img");
-		$("#gallery").append(imageElement);
+	$.ajax({
+		url: src
+	}).done((data) => {
+		let i = 0;
 
-		var imgName = "000" + (i + 1);
-		imgName = imgName.substring(imgName.length - 3, imgName.length);
+		$(data).find("a:contains('.jpg')").each(function () {
+			const filePath = this.href.replace(window.location.host, "").replace("http://", "");
 
-		$(imageElement).attr("src", src + imgName + ".jpg");
-		$(imageElement).attr("class", "photo");
-		$(imageElement).attr("img-index", i);
-	}
+			const imageElement = document.createElement("img");
+			$("#gallery").append(imageElement);
+
+			$(imageElement).attr("src", filePath);
+			$(imageElement).attr("class", "photo");
+			$(imageElement).attr("img-index", i);
+
+			i++;
+		});
+	});
 }
 
 function OpenModal(image) {
