@@ -1,0 +1,24 @@
+{
+  "name": "podoxin-four-website",
+  "version": "1.0.0",
+  "description": "Website for Podoxin Four band.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "npm server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdamPodoxin/Podoxin-Four-Website.git"
+  },
+  "author": "Adam Podoxin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdamPodoxin/Podoxin-Four-Website/issues"
+  },
+  "homepage": "https://github.com/AdamPodoxin/Podoxin-Four-Website#readme"
+}
