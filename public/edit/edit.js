@@ -12,6 +12,10 @@ socket.on("return events json", (data) => {
   loadEventsFromJSON(data);
 });
 
+socket.on("data sent successfully", () => {
+  alert("Data sent successfully");
+});
+
 function onload() {
   tabs = document.getElementsByClassName("tab");
   eventsTable = document.getElementById("events-table");

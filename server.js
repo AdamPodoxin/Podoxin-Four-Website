@@ -1,21 +1,13 @@
 const express = require("express");
-const router = express.Router();
 const bodyParser = require("body-parser");
+const http = require("http");
 const socketIO = require("socket.io");
 const fs = require("fs");
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
 const PORT = process.env.PORT || 5000;
-const Event = mongoose.model(
-  "event",
-  new Schema({
-    data: {
-      type: String,
-      required: true,
-    },
-  })
-);
+
+const events = require("./routes");
 
 const app = express();
 
@@ -25,25 +17,7 @@ const server = app
 
 app.use(bodyParser.json());
 
-app.use(
-  "/api/events",
-  (router.get("/", (req, res) => {
-    Event.find().then((event) => {
-      console.log(event);
-      res.json(event);
-    });
-  }),
-  router.post("/", (req, res) => {
-    console.log(req.body);
-    const newEvent = new Event({
-      data: req.body.data,
-    });
-
-    newEvent.save().then((event) => {
-      res.json(event);
-    });
-  }))
-);
+app.use("/api/events", events);
 
 let io = socketIO(server);
 
@@ -62,17 +36,53 @@ io.on("connection", (socket) => {
     });
   });
 
-  socket.on("upload events json", (data) => {
-    fs.writeFile("public/json/events.json", data, (err) => {
-      if (err) throw err;
-      console.log("The file has been saved!");
+  socket.on("upload events json", (eventsData) => {
+    var postData = JSON.stringify({
+      data: JSON.stringify(JSON.parse(eventsData)),
     });
+
+    var options = {
+      hostname: "",
+      port: PORT,
+      path: "/api/events",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    var req = http.request(options);
+
+    req.on("error", (e) => {
+      console.error(e);
+    });
+
+    req.write(postData);
+    req.end();
+
+    socket.emit("data sent successfully");
   });
 
   socket.on("get events json", (data) => {
-    fs.readFile("public/json/events.json", (err, data) => {
-      if (err) throw err;
-      socket.emit("return events json", JSON.parse(data));
-    });
+    var options = {
+      host: "",
+      path: "/api/events",
+      port: PORT,
+    };
+
+    let callback = (response) => {
+      let strResponse = "";
+
+      response.on("data", (chunk) => {
+        strResponse += chunk;
+      });
+
+      response.on("end", () => {
+        const returnData = JSON.parse(JSON.parse(strResponse)[0].data);
+        socket.emit("return events json", returnData);
+      });
+    };
+
+    http.request(options, callback).end();
   });
 });
