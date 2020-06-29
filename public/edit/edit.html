@@ -1,41 +1,36 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Edit Podoxin Four</title>
 
-    <link rel="stylesheet" type="text/css" href="edit.css">
+    <link rel="stylesheet" type="text/css" href="edit.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-</head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  </head>
 
-<body>
+  <body>
     <div id="navbar">
-        <button onclick="openTab('events')">Events</button>
+      <button onclick="openTab('events')">Events</button>
     </div>
 
     <div id="events" class="tab">
-        <h1>Events</h1>
-        <button onclick="addEventsTr(false, '', '', '', '')">Add</button>
-        <button onclick="generateEventsJSON()">Generate JSON</button>
+      <h1>Events</h1>
+      <button onclick="addEventsTr(false, '', '', '', '')">Add</button>
+      <button onclick="generateEventsJSON()">Generate JSON</button>
 
-        <br><br><br>
+      <br /><br /><br />
 
-        <table id="events-table">
-            <thead>
-                <th>Finished</th>
-                <th>Date</th>
-                <th>Venue</th>
-                <th>Venue Site</th>
-                <th>YouTube ID</th>
-            </thead>
-        </table>
+      <table id="events-table">
+        <thead>
+          <th>Finished</th>
+          <th>Date</th>
+          <th>Venue</th>
+          <th>Venue Site</th>
+          <th>YouTube ID</th>
+        </thead>
+      </table>
     </div>
 
-    <br><br><br>
-
-    <input type="text" id="json">
-
     <script src="edit.js"></script>
-</body>
-
+  </body>
 </html>

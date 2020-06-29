@@ -9,10 +9,18 @@ const server = express()
   .listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 let io = socketIO(server);
+
 io.on("connection", (socket) => {
   socket.on("get gallery images", (data) => {
     fs.readdir("public/img/gallery/", (err, files) => {
       socket.emit("return gallery images", files);
+    });
+  });
+
+  socket.on("upload events json", (data) => {
+    fs.writeFile("public/json/events.json", data, (err) => {
+      if (err) throw err;
+      console.log("The file has been saved!");
     });
   });
 });
