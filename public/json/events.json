@@ -1,12 +1,5 @@
 [
 	{
-		"finished": false,
-		"venue": "asd",
-		"venueSite": "asd",
-		"date": "asd",
-		"ytId": ""
-	},
-	{
 		"finished": true,
 		"venue": "PoCo Farners Market, Port Coquitlam BC",
 		"venueSite": "https://www.portcoquitlamfarmersmarket.org/",

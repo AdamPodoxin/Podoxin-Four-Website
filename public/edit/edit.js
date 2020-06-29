@@ -4,7 +4,7 @@ var eventsTable;
 var jsonInput;
 
 const eventsTrTemplate =
-  "<tr><td><input type='checkbox' name='finished'></td><td><input type='text' name='date'></td><td><input type='text' name='venue'></td><td><input type='text' name='venue-site'></td><td><input type='text' name='yt-id'></td></tr>";
+  "<tr><td><input type='checkbox' name='finished'></td><td><input type='text' name='date'></td><td><input type='text' name='venue'></td><td><input type='text' name='venue-site'></td><td><input type='text' name='yt-id'></td><td><input type='button' name='delete' value='Delete' /></td></tr>";
 
 let socket = io();
 
@@ -55,6 +55,12 @@ function addEventsTr(finished, date, venue, venueSite, ytId) {
   venueInput.value = venue;
   venueSiteInput.value = venueSite;
   ytIdInput.value = ytId;
+
+  //Delete button
+  const deleteButton = elementToAdd.childNodes[5].childNodes[0];
+  $(deleteButton).click(() => {
+    $(elementToAdd).remove();
+  });
 }
 
 function generateEventsJSON() {
