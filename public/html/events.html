@@ -1,77 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Events - Podoxin Four</title>
 
-<head>
-	<title>Events - Podoxin Four</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/index.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/events.css"
+    />
 
-	<link rel="stylesheet" type="text/css" media="screen" href="../css/index.css">
-	<link rel="stylesheet" type="text/css" media="screen" href="../css/events.css">
+    <link rel="shortcut icon" href="../img/favicon.png" />
 
-	<link rel="shortcut icon" href="../img/favicon.png">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript" src="../js/events.js"></script>
 
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script type="text/javascript" src="../js/index.js"></script>
-	<script type="text/javascript" src="../js/events.js"></script>
+    <meta charset="utf-8" />
+    <meta property="og:type" content="Music Band" />
+    <meta property="og:image" content="../img/favicon.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta name="Description" content="Smooth funk jazz quartet" />
+  </head>
 
-	<meta charset="utf-8">
-	<meta property="og:type" content="Music Band">
-	<meta property="og:image" content="../img/favicon.png">
-	<meta property="og:image:type" content="image/png">
-	<meta property="og:image:width" content="512">
-	<meta property="og:image:height" content="512">
-	<meta name="Description" content="Smooth funk jazz quartet">
-</head>
+  <body>
+    <div id="navbar">
+      <a href="../index.html">HOME</a>
+      <a href="movie.html">MOVIE</a>
+      <a href="music.html">MUSIC</a>
+      <a href="gallery.html">GALLERY</a>
+      <a href="events.html" id="current-page">EVENTS</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
 
-<body>
-	<div id="navbar">
-		<a href="../index.html">HOME</a>
-		<a href="movie.html">MOVIE</a>
-		<a href="music.html">MUSIC</a>
-		<a href="gallery.html">GALLERY</a>
-		<a href="events.html" id="current-page">EVENTS</a>
-		<a href="contact.html">CONTACT</a>
-	</div>
+    <img src="../img/navbar.png" id="navbar-button" />
 
-	<img src="../img/navbar.png" id="navbar-button">
+    <br />
 
-	<br>
+    <span id="navbar-spacer"></span>
 
-	<span id="navbar-spacer"></span>
+    <center>
+      <h1 class="events-title">Upcoming Events</h1>
+      <p id="no-events">Nothing to see here... yet.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Venue</th>
+          </tr>
+        </thead>
+        <tbody id="upcoming-events-body"></tbody>
+      </table>
 
-	<center>
-		<h1 class="events-title">Upcoming Events</h1>
-		<p id="no-events">Nothing to see here... yet.</p>
-		<table>
-			<thead>
-				<tr>
-					<th>Date</th>
-					<th>Venue</th>
-				</tr>
-			</thead>
-			<tbody id="upcoming-events-body">
-			</tbody>
-		</table>
+      <br />
 
-		<br>
+      <h1 class="events-title">Past Events</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Venue</th>
+          </tr>
+        </thead>
+        <tbody id="past-events-body"></tbody>
+      </table>
+    </center>
 
-		<h1 class="events-title">Past Events</h1>
-		<table>
-			<thead>
-				<tr>
-					<th>Date</th>
-					<th>Venue</th>
-				</tr>
-			</thead>
-			<tbody id="past-events-body">
-			</tbody>
-		</table>
-	</center>
+    <span id="modalbg">
+      <img src="../img/modal/close.png" width="40px" height="40px" id="close" />
+    </span>
 
-	<span id="modalbg">
-		<img src="../img/modal/close.png" width="40px" height="40px" id="close">
-	</span>
-
-	<iframe id="modal" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-</body>
-
+    <iframe
+      id="modal"
+      src=""
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+    ></iframe>
+  </body>
 </html>

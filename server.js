@@ -23,4 +23,11 @@ io.on("connection", (socket) => {
       console.log("The file has been saved!");
     });
   });
+
+  socket.on("get events json", (data) => {
+    fs.readFile("public/json/events.json", (err, data) => {
+      if (err) throw err;
+      socket.emit("return events json", JSON.parse(data));
+    });
+  });
 });

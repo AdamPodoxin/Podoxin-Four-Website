@@ -8,12 +8,16 @@ const eventsTrTemplate =
 
 let socket = io();
 
+socket.on("return events json", (data) => {
+  loadEventsFromJSON(data);
+});
+
 function onload() {
   tabs = document.getElementsByClassName("tab");
   eventsTable = document.getElementById("events-table");
   jsonInput = document.getElementById("json");
 
-  loadEventsFromJSON();
+  socket.emit("get events json");
 }
 
 function openTab(tabId) {
@@ -89,23 +93,17 @@ function generateEventsJSON() {
   socket.emit("upload events json", generatedJSON);
 }
 
-function loadEventsFromJSON() {
-  $.ajax({
-    url: "../json/events.json",
-    dataType: "text",
-    success: function (data) {
-      const dataArray = Array.from(JSON.parse(data));
+function loadEventsFromJSON(data) {
+  const dataArray = Array.from(data);
 
-      dataArray.reverse().forEach((eventTableRow) => {
-        addEventsTr(
-          eventTableRow.finished,
-          eventTableRow.date,
-          eventTableRow.venue,
-          eventTableRow.venueSite,
-          eventTableRow.ytId
-        );
-      });
-    },
+  dataArray.reverse().forEach((eventTableRow) => {
+    addEventsTr(
+      eventTableRow.finished,
+      eventTableRow.date,
+      eventTableRow.venue,
+      eventTableRow.venueSite,
+      eventTableRow.ytId
+    );
   });
 }
 
