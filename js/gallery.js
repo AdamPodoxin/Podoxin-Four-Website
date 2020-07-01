@@ -1,4 +1,4 @@
-const numImgs = 68;
+let numImgs = 0;
 var currentImageIndex;
 
 function LoadImages() {

@@ -21,7 +21,7 @@ $(document).ready(function () {
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: (res) => {
-      loadEventsFromJSON(JSON.parse(res[0].data));
+      loadEventsFromJSON(res);
     },
     error: (err) => {
       console.error(err);
