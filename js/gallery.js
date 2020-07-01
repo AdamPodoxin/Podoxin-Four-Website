@@ -1,7 +1,7 @@
 var currentImageIndex;
 
 function LoadImages() {
-  var src = "../img/gallery/";
+  var src = `${window.location.host}/img/gallery/`;
 
   $.ajax({
     url: src,
