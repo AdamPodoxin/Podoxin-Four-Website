@@ -1,29 +1,26 @@
 var currentImageIndex;
 
 function LoadImages() {
-  var src = `${window.location.host}/img/gallery/`;
-
+  var src = "../img/gallery";
   $.ajax({
     url: src,
-  }).done((data) => {
-    let i = 0;
+    method: "get",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: (data) => {
+      let i = 0;
 
-    $(data)
-      .find("a:contains('.jpg')")
-      .each(function () {
-        const filePath = this.href
-          .replace(window.location.host, "")
-          .replace("http://", "");
-
+      Array.from(data).forEach((imgName) => {
+        const filePath = `${src}/${imgName}`;
         const imageElement = document.createElement("img");
         $("#gallery").append(imageElement);
 
         $(imageElement).attr("src", filePath);
         $(imageElement).attr("class", "photo");
         $(imageElement).attr("img-index", i);
-
-        i++;
       });
+    },
+    fail: (err) => console.log(err),
   });
 }
 
