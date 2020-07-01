@@ -1,38 +1,38 @@
-let currentImageIndex = 0;
-let amountOfImages = 0;
+var currentImageIndex;
 
-let socket = io();
-
-socket.on("return gallery images", (data) => {
-  LoadImages(data);
-});
-
-function LoadImages(images) {
+function LoadImages() {
   var src = "../img/gallery/";
 
-  let i = 0;
-  Array.from(images).forEach((imageName) => {
-    const filePath = src + imageName;
-    const imageElement = document.createElement("img");
-    $("#gallery").append(imageElement);
+  $.ajax({
+    url: src,
+  }).done((data) => {
+    let i = 0;
 
-    $(imageElement).attr("src", filePath);
-    $(imageElement).attr("class", "photo");
-    $(imageElement).attr("img-index", i);
-    $(imageElement).attr("onclick", `OpenModal('${filePath}', ${i});`);
+    $(data)
+      .find("a:contains('.jpg')")
+      .each(function () {
+        const filePath = this.href
+          .replace(window.location.host, "")
+          .replace("http://", "");
 
-    i++;
+        const imageElement = document.createElement("img");
+        $("#gallery").append(imageElement);
+
+        $(imageElement).attr("src", filePath);
+        $(imageElement).attr("class", "photo");
+        $(imageElement).attr("img-index", i);
+
+        i++;
+      });
   });
-
-  amountOfImages = i + 1;
 }
 
-function OpenModal(imgSrc, imgIndex) {
+function OpenModal(image) {
   $("#modal").css("display", "block");
   $("#modalbg").css("display", "block");
 
-  $("#modal").attr("src", imgSrc);
-  currentImageIndex = imgIndex;
+  $("#modal").attr("src", image.src);
+  currentImageIndex = parseInt($(image).attr("img-index"));
 
   AdjustModalSize();
   AdjustNavigationButtons();
@@ -43,6 +43,7 @@ function OpenModal(imgSrc, imgIndex) {
 function CloseModal() {
   $("#modal").css("display", "none");
   $("#modalbg").css("display", "none");
+
   $("html").css("overflowY", "scroll");
 }
 
@@ -57,7 +58,6 @@ function ChangeImage(count) {
 
   if (newImageIndex >= 0 && newImageIndex < amountOfImages) {
     $("#modal").attr("src", gallery.children[newImageIndex].src);
-    console.log($("#modal").attr("src"));
     currentImageIndex = newImageIndex;
 
     AdjustModalSize();
@@ -84,16 +84,22 @@ function AdjustNavigationButtons() {
 }
 
 $(document).ready(function () {
-  socket.emit("get gallery images");
+  LoadImages();
 
   if (window.innerWidth >= 1280) {
-    $("#close").click(() => {
+    $(".photo").click(function (event) {
+      OpenModal(event.target);
+    });
+    $("#modalbg").click(function () {
       CloseModal();
     });
-    $("#prev").click(() => {
+    $("#close").click(function () {
+      CloseModal();
+    });
+    $("#prev").click(function () {
       ChangeImage(-1);
     });
-    $("#next").click(() => {
+    $("#next").click(function () {
       ChangeImage(1);
     });
   }
