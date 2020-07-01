@@ -75,8 +75,6 @@ function AdjustNavigationButtons() {
 }
 
 $(document).ready(function () {
-  LoadImages();
-
   if (window.innerWidth >= 1280) {
     $(".photo").click(function (event) {
       OpenModal(event.target);
@@ -94,4 +92,22 @@ $(document).ready(function () {
       ChangeImage(1);
     });
   }
+
+  $.ajax({
+    headers: {
+      "x-requested-with": "xhr",
+    },
+    url:
+      "https://cors-anywhere.herokuapp.com/https://podoxin-four-website.herokuapp.com/api/numImgs",
+    method: "GET",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: (res) => {
+      numImgs = res;
+      LoadImages();
+    },
+    error: (err) => {
+      console.error(err);
+    },
+  });
 });
