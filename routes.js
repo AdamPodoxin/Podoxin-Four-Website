@@ -12,10 +12,10 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const newItem = new Event({
     data: req.body.data,
-    id: "customId",
+    item: req.body.item,
   });
 
-  Event.findOneAndDelete({ id: "customId" }, (err, doc) => {
+  Event.findOneAndDelete({ item: newItem.item }, (err, doc) => {
     if (err) console.error(err);
     newItem.save().then((event) => {
       res.json(event);

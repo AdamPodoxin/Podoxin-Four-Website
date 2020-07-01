@@ -39,6 +39,7 @@ io.on("connection", (socket) => {
   socket.on("upload events json", (eventsData) => {
     var postData = JSON.stringify({
       data: JSON.stringify(JSON.parse(eventsData)),
+      item: "events",
     });
 
     var options = {
@@ -78,7 +79,14 @@ io.on("connection", (socket) => {
       });
 
       response.on("end", () => {
-        const returnData = JSON.parse(JSON.parse(strResponse)[0].data);
+        const returnData =
+          strResponse == "[]"
+            ? null
+            : Array.from(JSON.parse(strResponse)).filter(
+                (data) => data.item == "events"
+              )[0];
+
+        returnData.data = JSON.parse(returnData.data);
         socket.emit("return events json", returnData);
       });
     };

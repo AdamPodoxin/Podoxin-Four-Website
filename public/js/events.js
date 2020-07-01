@@ -1,14 +1,6 @@
 var windowWidth = window.innerWidth;
 
-let socket = io();
-
-socket.on("return events json", (data) => {
-  loadJSONData(data);
-});
-
 $(document).ready(function () {
-  socket.emit("get events json");
-
   var iframeWidth = windowWidth * 0.8;
   var iframeHeight = (iframeWidth * 9) / 16;
 
@@ -18,11 +10,20 @@ $(document).ready(function () {
   $("#close").click(function () {
     CloseModal();
   });
-});
 
-function loadJSONData(data) {
-  loadEventsFromJSON(data);
-}
+  $.ajax({
+    headers: {
+      "x-requested-with": "xhr",
+    },
+    url:
+      "https://cors-anywhere.herokuapp.com/https://podoxin-four-website.herokuapp.com/api/events",
+    method: "GET",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: (res) => loadEventsFromJSON(res.data),
+    error: (err) => console.error(err),
+  });
+});
 
 function loadEventsFromJSON(jsonData) {
   const dataArray = Array.from(jsonData);

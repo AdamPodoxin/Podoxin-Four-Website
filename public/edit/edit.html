@@ -5,7 +5,6 @@
 
     <link rel="stylesheet" type="text/css" href="edit.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
   </head>
 
   <body>
@@ -17,6 +16,11 @@
       <h1>Events</h1>
       <button onclick="addEventsTr(false, '', '', '', '')">Add</button>
       <button onclick="generateEventsJSON()">Generate JSON</button>
+
+      <br /><br /><br />
+
+      <textarea id="json-input"></textarea>
+      <button onclick="uploadJsonFromInput();">Upload JSON</button>
 
       <br /><br /><br />
 

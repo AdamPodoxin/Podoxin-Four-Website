@@ -8,8 +8,8 @@ const eventsTrTemplate =
 
 let socket = io();
 
-socket.on("return events json", (data) => {
-  loadEventsFromJSON(data);
+socket.on("return events json", (res) => {
+  loadEventsFromJSON(res.data);
 });
 
 socket.on("data sent successfully", () => {
@@ -33,6 +33,11 @@ function openTab(tabId) {
     }
   });
 }
+
+const uploadJsonFromInput = () => {
+  const jsonInput = JSON.parse($("#json-input").val());
+  loadEventsFromJSON(jsonInput);
+};
 
 /*--------Events--------*/
 

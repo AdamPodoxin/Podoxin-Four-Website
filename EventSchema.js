@@ -6,7 +6,7 @@ let Event = new Schema({
     type: String,
     required: true,
   },
-  id: {
+  item: {
     type: String,
     required: true,
   },
