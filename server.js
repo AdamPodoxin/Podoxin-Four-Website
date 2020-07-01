@@ -5,6 +5,8 @@ const socketIO = require("socket.io");
 const fs = require("fs");
 const mongoose = require("mongoose");
 
+const cors = require("cors");
+
 const PORT = process.env.PORT || 5000;
 
 const events = require("./routes");
@@ -16,6 +18,7 @@ const server = app
   .listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use("/api/events", events);
 

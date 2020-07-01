@@ -19,7 +19,7 @@ $(document).ready(function () {
       "https://cors-anywhere.herokuapp.com/https://podoxin-four-website.herokuapp.com/api/events",
     method: "GET",
     contentType: "application/json; charset=utf-8",
-    dataType: "json",
+    dataType: "jsonp",
     success: (res) => loadEventsFromJSON(res.data),
     error: (err) => console.error(err),
   });
