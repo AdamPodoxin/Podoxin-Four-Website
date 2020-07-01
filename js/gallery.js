@@ -1,27 +1,21 @@
+const numImgs = 68;
 var currentImageIndex;
 
 function LoadImages() {
   var src = "../img/gallery";
-  $.ajax({
-    url: src,
-    method: "get",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: (data) => {
-      let i = 0;
 
-      Array.from(data).forEach((imgName) => {
-        const filePath = `${src}/${imgName}`;
-        const imageElement = document.createElement("img");
-        $("#gallery").append(imageElement);
+  for (let i = 1; i <= numImgs; i++) {
+    let imgName = `00${i}`;
+    imgName = imgName.substring(imgName.length - 3, imgName.length);
 
-        $(imageElement).attr("src", filePath);
-        $(imageElement).attr("class", "photo");
-        $(imageElement).attr("img-index", i);
-      });
-    },
-    fail: (err) => console.log(err),
-  });
+    const filePath = `${src}/${imgName}.jpg`;
+    const imageElement = document.createElement("img");
+    $("#gallery").append(imageElement);
+
+    $(imageElement).attr("src", filePath);
+    $(imageElement).attr("class", "photo");
+    $(imageElement).attr("img-index", i);
+  }
 }
 
 function OpenModal(image) {
