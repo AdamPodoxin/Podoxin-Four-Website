@@ -15,6 +15,11 @@ function LoadImages() {
     $(imageElement).attr("src", filePath);
     $(imageElement).attr("class", "photo");
     $(imageElement).attr("img-index", i);
+
+    if (window.innerWidth >= 1280)
+      $(imageElement).click(() => {
+        OpenModal(imageElement);
+      });
   }
 }
 
@@ -76,9 +81,7 @@ function AdjustNavigationButtons() {
 
 $(document).ready(function () {
   if (window.innerWidth >= 1280) {
-    $(".photo").click(function (event) {
-      OpenModal(event.target);
-    });
+    $(".photo").click();
     $("#modalbg").click(function () {
       CloseModal();
     });
@@ -97,8 +100,7 @@ $(document).ready(function () {
     headers: {
       "x-requested-with": "xhr",
     },
-    url:
-      "https://cors-anywhere.herokuapp.com/https://podoxin-four-website.herokuapp.com/api/numImgs",
+    url: "https://podoxin-four-website.herokuapp.com/api/numImgs",
     method: "GET",
     contentType: "application/json; charset=utf-8",
     dataType: "json",
