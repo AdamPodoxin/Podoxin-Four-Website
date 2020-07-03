@@ -21,6 +21,8 @@ function LoadImages() {
         OpenModal(imageElement);
       });
   }
+
+  $("#loading-indicator").css("display", "none");
 }
 
 function OpenModal(image) {

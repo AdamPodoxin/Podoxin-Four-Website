@@ -15,8 +15,7 @@ $(document).ready(function () {
     headers: {
       "x-requested-with": "xhr",
     },
-    url:
-      "https://cors-anywhere.herokuapp.com/https://podoxin-four-website.herokuapp.com/api/events",
+    url: "https://podoxin-four-website.herokuapp.com/api/events",
     method: "GET",
     contentType: "application/json; charset=utf-8",
     dataType: "json",
@@ -40,6 +39,8 @@ function loadEventsFromJSON(jsonData) {
       $("#upcoming-events-body").append(createEventFromJSON(element));
     }
   });
+
+  $("#loading-indicator").css("display", "none");
 }
 
 function createEventFromJSON(element) {
