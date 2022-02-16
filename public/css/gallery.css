@@ -1,81 +1,83 @@
-#prev, #next {
-    position: fixed;
-    top: 50%;
+#prev,
+#next {
+	position: fixed;
+	top: 50%;
 }
 
-#prev img, #next img {
-    position: absolute;
+#prev img,
+#next img {
+	position: absolute;
 }
 
 #close {
-    position: fixed;
+	position: fixed;
 
-    top: 1%;
-    right: 1%;
+	top: 1%;
+	right: 1%;
 }
 
 #modal {
-    position: fixed;
-    height: 80%;
+	position: fixed;
+	height: 80%;
 
-    top: 50%;
-    left: 50%;
+	top: 50%;
+	left: 50%;
 
-    transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 
-    border-radius: 8px;
+	border-radius: 8px;
 }
 
 #modalbg {
-    position: fixed;
-    display: none;
+	position: fixed;
+	display: none;
 
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
 
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 
-    background-color: rgba(40, 40, 40, 0.7);
+	background-color: rgba(40, 40, 40, 0.7);
 }
 
 .photo {
-    display: inline;
-    vertical-align: top;
+	display: inline;
+	vertical-align: top;
 
-    width: 22%;
-    height: auto;
+	width: 22%;
+	height: auto;
 
-    margin: 10px;
+	margin: 10px;
 
-    border-radius: 8px;
+	border-radius: 8px;
 }
 
 .photo:hover {
-    border: 1px solid #555555;
-    margin: 9px;
-    cursor: pointer;
+	border: 1px solid #555555;
+	margin: 9px;
+	cursor: pointer;
 }
 
 /* Mobile styling */
 @media only screen and (max-width: 1280px) {
-    #about {
-        font-size: 56px;
-    }
+	#about {
+		font-size: 56px;
+	}
 
 	.photo {
 		width: 95%;
 		height: auto;
 	}
 
-    .photo:hover {
-        border: none;
-        margin: 10px;
-        cursor: default;
-    }
+	.photo:hover {
+		border: none;
+		margin: 10px;
+		cursor: default;
+	}
 }

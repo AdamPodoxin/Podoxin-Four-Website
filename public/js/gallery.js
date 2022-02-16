@@ -1,6 +1,3 @@
-let numImgs = 0;
-var currentImageIndex;
-
 // Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
 import {
@@ -11,37 +8,18 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-storage.js";
 import { firebaseConfig } from "./config.js";
 
-function LoadImages() {
-	var src = "../img/gallery";
+let currentImgIndex = 0;
+let numImgs = 0;
 
-	for (let i = 1; i <= numImgs; i++) {
-		let imgName = `00${i}`;
-		imgName = imgName.substring(imgName.length - 3, imgName.length);
+let shouldOpenModal = false;
 
-		const filePath = `${src}/${imgName}.jpg`;
-		const imageElement = document.createElement("img");
-		$("#gallery").append(imageElement);
-
-		$(imageElement).attr("src", filePath);
-		$(imageElement).attr("class", "photo");
-		$(imageElement).attr("img-index", i);
-
-		if (window.innerWidth >= 1280)
-			$(imageElement).click(() => {
-				OpenModal(imageElement);
-			});
-	}
-
-	$("#loading-indicator").css("display", "none");
-}
-
-const loadImage = (url) => {
+const createImage = (url) => {
 	const imageElement = document.createElement("img");
 	$("#gallery").append(imageElement);
 
 	$(imageElement).attr("src", url);
 	$(imageElement).attr("class", "photo");
-	//$(imageElement).attr("img-index", i);
+	$(imageElement).attr("img-index", numImgs);
 
 	if (window.innerWidth >= 1280)
 		$(imageElement).click(() => {
@@ -54,7 +32,7 @@ function OpenModal(image) {
 	$("#modalbg").css("display", "block");
 
 	$("#modal").attr("src", image.src);
-	currentImageIndex = parseInt($(image).attr("img-index"));
+	currentImgIndex = parseInt($(image).attr("img-index")) - 1;
 
 	AdjustModalSize();
 	AdjustNavigationButtons();
@@ -70,17 +48,19 @@ function CloseModal() {
 }
 
 function ChangeImage(count) {
-	var newImageIndex = currentImageIndex + count;
+	shouldOpenModal = true;
 
-	if (newImageIndex >= amountOfImages) {
-		newImageIndex = 0;
-	} else if (newImageIndex < 0) {
-		newImageIndex = amountOfImages - 1;
+	var newImgIndex = currentImgIndex + count;
+
+	if (newImgIndex >= numImgs) {
+		newImgIndex = 0;
+	} else if (newImgIndex < 0) {
+		newImgIndex = numImgs - 1;
 	}
 
-	if (newImageIndex >= 0 && newImageIndex < amountOfImages) {
-		$("#modal").attr("src", gallery.children[newImageIndex].src);
-		currentImageIndex = newImageIndex;
+	if (newImgIndex >= 0 && newImgIndex < numImgs) {
+		$("#modal").attr("src", gallery.children[newImgIndex].src);
+		currentImgIndex = newImgIndex;
 
 		AdjustModalSize();
 		AdjustNavigationButtons();
@@ -109,7 +89,11 @@ $(document).ready(function () {
 	if (window.innerWidth >= 1280) {
 		$(".photo").click();
 		$("#modalbg").click(function () {
-			CloseModal();
+			if (shouldOpenModal) {
+				shouldOpenModal = false;
+			} else {
+				CloseModal();
+			}
 		});
 		$("#close").click(function () {
 			CloseModal();
@@ -128,7 +112,10 @@ $(document).ready(function () {
 
 	listAll(listRef).then((res) => {
 		res.items.forEach((itemRef) => {
-			getDownloadURL(itemRef).then((url) => loadImage(url));
+			getDownloadURL(itemRef).then((url) => {
+				numImgs++;
+				createImage(url);
+			});
 		});
 
 		$("#loading-indicator").css("display", "none");
