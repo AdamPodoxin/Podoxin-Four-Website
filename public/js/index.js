@@ -3,7 +3,7 @@ var closePath = "img/modal/close.png";
 
 var isNavbarOpen = false;
 
-if(!document.title.includes("Home")) {
+if (!document.title.includes("Home")) {
 	openPath = "../img/navbar.png";
 	closePath = "../img/modal/close.png";
 }
@@ -24,9 +24,9 @@ function CloseNavbar() {
 	isNavbarOpen = false;
 }
 
-$(document).ready(function() {
-	$("#navbar-button").click(function() {
-		if(isNavbarOpen) {
+$(document).ready(function () {
+	$("#navbar-button").click(function () {
+		if (isNavbarOpen) {
 			CloseNavbar();
 		} else {
 			OpenNavbar();

@@ -1,99 +1,99 @@
 var windowWidth = window.innerWidth;
 
 $(document).ready(function () {
-  var iframeWidth = windowWidth * 0.8;
-  var iframeHeight = (iframeWidth * 9) / 16;
+	var iframeWidth = windowWidth * 0.8;
+	var iframeHeight = (iframeWidth * 9) / 16;
 
-  $("#modal").attr("width", iframeWidth + "px");
-  $("#modal").attr("height", iframeHeight + "px");
+	$("#modal").attr("width", iframeWidth + "px");
+	$("#modal").attr("height", iframeHeight + "px");
 
-  $("#close").click(function () {
-    CloseModal();
-  });
+	$("#close").click(function () {
+		CloseModal();
+	});
 
-  $.ajax({
-    headers: {
-      "x-requested-with": "xhr",
-    },
-    url: "https://podoxin-four-website.herokuapp.com/api/events",
-    method: "GET",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: (res) => {
-      loadEventsFromJSON(res);
-    },
-    error: (err) => {
-      console.error(err);
-    },
-  });
+	$.ajax({
+		headers: {
+			"x-requested-with": "xhr",
+		},
+		url: "https://podoxin-four-website.herokuapp.com/api/events",
+		method: "GET",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: (res) => {
+			loadEventsFromJSON(res);
+		},
+		error: (err) => {
+			console.error(err);
+		},
+	});
 });
 
 function loadEventsFromJSON(jsonData) {
-  const dataArray = Array.from(jsonData);
+	const dataArray = Array.from(jsonData);
 
-  dataArray.forEach((element) => {
-    if (element.finished) {
-      $("#past-events-body").append(createEventFromJSON(element));
-    } else {
-      $("#no-events").css("display", "none");
-      $("#upcoming-events-body").append(createEventFromJSON(element));
-    }
-  });
+	dataArray.forEach((element) => {
+		if (element.finished) {
+			$("#past-events-body").append(createEventFromJSON(element));
+		} else {
+			$("#no-events").css("display", "none");
+			$("#upcoming-events-body").append(createEventFromJSON(element));
+		}
+	});
 
-  $("#loading-indicator").css("display", "none");
+	$("#loading-indicator").css("display", "none");
 }
 
 function createEventFromJSON(element) {
-  const dateHTML = "<td>" + element.date + "</td>";
+	const dateHTML = "<td>" + element.date + "</td>";
 
-  let venueComponents = element.venue.split(",");
-  let venueHTML =
-    "<td><a href='" +
-    element.venueSite +
-    "' target='_blank' class='hyperlink'>" +
-    venueComponents[0] +
-    "</td >";
+	let venueComponents = element.venue.split(",");
+	let venueHTML =
+		"<td><a href='" +
+		element.venueSite +
+		"' target='_blank' class='hyperlink'>" +
+		venueComponents[0] +
+		"</td >";
 
-  venueComponents.forEach((component, index) => {
-    if (index > 0) {
-      venueHTML += "," + component;
-    }
-  });
+	venueComponents.forEach((component, index) => {
+		if (index > 0) {
+			venueHTML += "," + component;
+		}
+	});
 
-  var ytHTML = "";
+	var ytHTML = "";
 
-  if (element.ytId != "") {
-    const modalId = '"' + element.ytId + '"';
-    ytHTML =
-      "<td><img src='../img/yt_icon_rgb.png' width='46px' height='32px' onclick='OpenModal(" +
-      modalId +
-      ")' title='Click to view video'></td>";
-  }
+	if (element.ytId != "") {
+		const modalId = '"' + element.ytId + '"';
+		ytHTML =
+			"<td><img src='../img/yt_icon_rgb.png' width='46px' height='32px' onclick='OpenModal(" +
+			modalId +
+			")' title='Click to view video'></td>";
+	}
 
-  const final = "<tr>" + dateHTML + venueHTML + ytHTML + "</tr>";
+	const final = "<tr>" + dateHTML + venueHTML + ytHTML + "</tr>";
 
-  return final;
+	return final;
 }
 
 function OpenModal(src) {
-  if (windowWidth >= 1280) {
-    $("#modal").attr(
-      "src",
-      "https://www.youtube.com/embed/" +
-        src +
-        "?rel=0&enablejsapi=1&version=3&playerapiid=ytplayer"
-    );
+	if (windowWidth >= 1280) {
+		$("#modal").attr(
+			"src",
+			"https://www.youtube.com/embed/" +
+				src +
+				"?rel=0&enablejsapi=1&version=3&playerapiid=ytplayer"
+		);
 
-    $("#modal").css("display", "block");
-    $("#modalbg").css("display", "block");
-  } else {
-    window.location = "https://youtube.com/watch?v=" + src;
-  }
+		$("#modal").css("display", "block");
+		$("#modalbg").css("display", "block");
+	} else {
+		window.location = "https://youtube.com/watch?v=" + src;
+	}
 }
 
 function CloseModal() {
-  $("#modal").attr("src", "");
+	$("#modal").attr("src", "");
 
-  $("#modal").css("display", "none");
-  $("#modalbg").css("display", "none");
+	$("#modal").css("display", "none");
+	$("#modalbg").css("display", "none");
 }

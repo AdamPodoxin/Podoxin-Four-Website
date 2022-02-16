@@ -1,54 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<title>Contact - Podoxin Four</title>
 
-<head>
-	<title>Contact - Podoxin Four</title>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			media="screen"
+			href="../css/index.css"
+		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			media="screen"
+			href="../css/contact.css"
+		/>
 
-	<link rel="stylesheet" type="text/css" media="screen" href="../css/index.css">
-	<link rel="stylesheet" type="text/css" media="screen" href="../css/contact.css">
+		<link rel="shortcut icon" href="../img/favicon.png" />
 
-	<link rel="shortcut icon" href="../img/favicon.png">
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="../js/index.js"></script>
 
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script type="text/javascript" src="../js/index.js"></script>
+		<meta charset="utf-8" />
+		<meta property="og:type" content="Music Band" />
+		<meta property="og:image" content="../img/favicon.png" />
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="512" />
+		<meta property="og:image:height" content="512" />
+		<meta name="Description" content="Smooth funk jazz quartet" />
+	</head>
 
-	<meta charset="utf-8">
-	<meta property="og:type" content="Music Band">
-	<meta property="og:image" content="../img/favicon.png">
-	<meta property="og:image:type" content="image/png">
-	<meta property="og:image:width" content="512">
-	<meta property="og:image:height" content="512">
-	<meta name="Description" content="Smooth funk jazz quartet">
-</head>
+	<body>
+		<div id="navbar">
+			<a href="../index.html">HOME</a>
+			<a href="movie.html">MOVIE</a>
+			<a href="music.html">MUSIC</a>
+			<a href="gallery.html">GALLERY</a>
+			<a href="events.html">EVENTS</a>
+			<a href="contact.html" id="current-page">CONTACT</a>
+		</div>
 
-<body>
-	<div id="navbar">
-		<a href="../index.html">HOME</a>
-		<a href="movie.html">MOVIE</a>
-		<a href="music.html">MUSIC</a>
-		<a href="gallery.html">GALLERY</a>
-		<a href="events.html">EVENTS</a>
-		<a href="contact.html" id="current-page">CONTACT</a>
-	</div>
+		<img src="../img/navbar.png" id="navbar-button" />
 
-	<img src="../img/navbar.png" id="navbar-button">
+		<br />
 
-	<br>
+		<span id="navbar-spacer"></span>
 
-	<span id="navbar-spacer"></span>
+		<h1 id="page-title">Contact</h1>
 
-	<h1 id="page-title">Contact</h1>
+		<center>
+			<form action="https://formspree.io/stas.podoxin@gmail.com" method="POST">
+				<input type="text" name="name" placeholder="Full Name" required />
+				<input type="email" name="email" placeholder="Email Address" required />
+				<input type="tel" name="phone" placeholder="Phone Number" required />
+				<textarea placeholder="Message"></textarea>
 
-	<center>
-		<form action="https://formspree.io/stas.podoxin@gmail.com" method="POST">
-			<input type="text" name="name" placeholder="Full Name" required>
-			<input type="email" name="email" placeholder="Email Address" required>
-			<input type="tel" name="phone" placeholder="Phone Number" required>
-			<textarea placeholder="Message"></textarea>
-
-			<input type="submit" name="submit" value="Submit">
-		</form>
-	</center>
-</body>
-
+				<input type="submit" name="submit" value="Submit" />
+			</form>
+		</center>
+	</body>
 </html>
