@@ -1,6 +1,17 @@
 var windowWidth = window.innerWidth;
 
-$(document).ready(function () {
+// Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+import {
+	getFirestore,
+	collection,
+	doc,
+	getDocs,
+} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js";
+
+import { firebaseConfig } from "./config.js";
+
+$(document).ready(async function () {
 	var iframeWidth = windowWidth * 0.8;
 	var iframeHeight = (iframeWidth * 9) / 16;
 
@@ -11,45 +22,38 @@ $(document).ready(function () {
 		CloseModal();
 	});
 
-	$.ajax({
-		headers: {
-			"x-requested-with": "xhr",
-		},
-		url: "https://podoxin-four-website.herokuapp.com/api/events",
-		method: "GET",
-		contentType: "application/json; charset=utf-8",
-		dataType: "json",
-		success: (res) => {
-			loadEventsFromJSON(res);
-		},
-		error: (err) => {
-			console.error(err);
-		},
+	const app = initializeApp(firebaseConfig);
+	const db = getFirestore(app);
+
+	const eventsArr = [];
+	const querySnapshot = await getDocs(collection(db, "events"));
+	querySnapshot.forEach((doc) => {
+		eventsArr.push(doc.data());
 	});
+
+	loadEventsFromJSON(eventsArr);
 });
 
-function loadEventsFromJSON(jsonData) {
-	const dataArray = Array.from(jsonData);
-
-	dataArray.forEach((element) => {
-		if (element.finished) {
-			$("#past-events-body").append(createEventFromJSON(element));
+function loadEventsFromJSON(eventsArr) {
+	eventsArr.forEach((eventData) => {
+		if (eventData.finished) {
+			$("#past-events-body").append(createEventFromJSON(eventData));
 		} else {
 			$("#no-events").css("display", "none");
-			$("#upcoming-events-body").append(createEventFromJSON(element));
+			$("#upcoming-events-body").append(createEventFromJSON(eventData));
 		}
 	});
 
 	$("#loading-indicator").css("display", "none");
 }
 
-function createEventFromJSON(element) {
-	const dateHTML = "<td>" + element.date + "</td>";
+function createEventFromJSON(eventData) {
+	const dateHTML = "<td>" + eventData.date + "</td>";
 
-	let venueComponents = element.venue.split(",");
+	let venueComponents = eventData.venue.split(",");
 	let venueHTML =
 		"<td><a href='" +
-		element.venueSite +
+		eventData.venueSite +
 		"' target='_blank' class='hyperlink'>" +
 		venueComponents[0] +
 		"</td >";
@@ -62,8 +66,8 @@ function createEventFromJSON(element) {
 
 	var ytHTML = "";
 
-	if (element.ytId != "") {
-		const modalId = '"' + element.ytId + '"';
+	if (eventData.ytId != "") {
+		const modalId = '"' + eventData.ytId + '"';
 		ytHTML =
 			"<td><img src='../img/yt_icon_rgb.png' width='46px' height='32px' onclick='OpenModal(" +
 			modalId +
