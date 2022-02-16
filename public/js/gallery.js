@@ -1,6 +1,16 @@
 let numImgs = 0;
 var currentImageIndex;
 
+// Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+import {
+	getStorage,
+	ref,
+	getDownloadURL,
+	listAll,
+} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-storage.js";
+import { firebaseConfig } from "./config.js";
+
 function LoadImages() {
 	var src = "../img/gallery";
 
@@ -24,6 +34,20 @@ function LoadImages() {
 
 	$("#loading-indicator").css("display", "none");
 }
+
+const loadImage = (url) => {
+	const imageElement = document.createElement("img");
+	$("#gallery").append(imageElement);
+
+	$(imageElement).attr("src", url);
+	$(imageElement).attr("class", "photo");
+	//$(imageElement).attr("img-index", i);
+
+	if (window.innerWidth >= 1280)
+		$(imageElement).click(() => {
+			OpenModal(imageElement);
+		});
+};
 
 function OpenModal(image) {
 	$("#modal").css("display", "block");
@@ -98,20 +122,15 @@ $(document).ready(function () {
 		});
 	}
 
-	$.ajax({
-		headers: {
-			"x-requested-with": "xhr",
-		},
-		url: "https://podoxin-four-website.herokuapp.com/api/numImgs",
-		method: "GET",
-		contentType: "application/json; charset=utf-8",
-		dataType: "json",
-		success: (res) => {
-			numImgs = res;
-			LoadImages();
-		},
-		error: (err) => {
-			console.error(err);
-		},
+	const app = initializeApp(firebaseConfig);
+	const storage = getStorage(app);
+	const listRef = ref(storage, "gallery/");
+
+	listAll(listRef).then((res) => {
+		res.items.forEach((itemRef) => {
+			getDownloadURL(itemRef).then((url) => loadImage(url));
+		});
+
+		$("#loading-indicator").css("display", "none");
 	});
 });
