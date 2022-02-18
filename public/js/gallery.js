@@ -122,7 +122,9 @@ const createImageRecursive = (listRef, i) => {
 	}
 
 	getDownloadURL(listRef[i]).then((url) => {
+		numImgs++;
 		createImage(url);
+
 		createImageRecursive(listRef, i + 1);
 	});
 };
