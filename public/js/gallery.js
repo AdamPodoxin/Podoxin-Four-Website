@@ -111,13 +111,18 @@ $(document).ready(function () {
 	const listRef = ref(storage, "gallery/");
 
 	listAll(listRef).then((res) => {
-		res.items.forEach((itemRef) => {
-			getDownloadURL(itemRef).then((url) => {
-				numImgs++;
-				createImage(url);
-			});
-		});
-
+		createImageRecursive(res.items, 0);
 		$("#loading-indicator").css("display", "none");
 	});
 });
+
+const createImageRecursive = (listRef, i) => {
+	if (listRef[i] == null) {
+		return;
+	}
+
+	getDownloadURL(listRef[i]).then((url) => {
+		createImage(url);
+		createImageRecursive(listRef, i + 1);
+	});
+};
