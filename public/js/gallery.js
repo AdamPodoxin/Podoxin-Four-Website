@@ -3,7 +3,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase
 import {
 	getStorage,
 	ref,
-	getDownloadURL,
 	listAll,
 } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-storage.js";
 import { firebaseConfig } from "./config.js";
@@ -13,13 +12,13 @@ let numImgs = 0;
 
 let shouldOpenModal = false;
 
-const createImage = (url) => {
+const createImage = (url, i) => {
 	const imageElement = document.createElement("img");
 	$("#gallery").append(imageElement);
 
 	$(imageElement).attr("src", url);
 	$(imageElement).attr("class", "photo");
-	$(imageElement).attr("img-index", numImgs);
+	$(imageElement).attr("img-index", i);
 
 	if (window.innerWidth >= 1280)
 		$(imageElement).click(() => {
@@ -111,20 +110,19 @@ $(document).ready(function () {
 	const listRef = ref(storage, "gallery/");
 
 	listAll(listRef).then((res) => {
-		createImageRecursive(res.items, 0);
+		numImgs = res.items.length;
+
+		for (let i = 1; i <= numImgs; i++) {
+			let imgName = `00${i}`;
+			imgName = imgName.substring(imgName.length - 3, imgName.length);
+
+			createImage(generateImageURL(imgName), i);
+		}
+
 		$("#loading-indicator").css("display", "none");
 	});
 });
 
-const createImageRecursive = (listRef, i) => {
-	if (listRef[i] == null) {
-		return;
-	}
-
-	getDownloadURL(listRef[i]).then((url) => {
-		numImgs++;
-		createImage(url);
-
-		createImageRecursive(listRef, i + 1);
-	});
+const generateImageURL = (imgName) => {
+	return `https://firebasestorage.googleapis.com/v0/b/podoxin-four-website.appspot.com/o/gallery%2F${imgName}.jpg?alt=media`;
 };
