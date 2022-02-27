@@ -6,6 +6,7 @@ import {
 	getFirestore,
 	collection,
 	doc,
+	getDoc,
 	getDocs,
 } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js";
 
@@ -25,11 +26,31 @@ $(document).ready(async function () {
 	const app = initializeApp(firebaseConfig);
 	const db = getFirestore(app);
 
-	const eventsArr = [];
+	let eventsArr = [];
 	const querySnapshot = await getDocs(collection(db, "events"));
-	querySnapshot.forEach((doc) => {
-		eventsArr.push(doc.data());
-	});
+
+	const eventsMetaRef = doc(db, "meta", "events");
+	const eventsMetaSnapshot = await getDoc(eventsMetaRef);
+
+	const localLastUpdated = parseInt(window.localStorage.getItem("lastUpdated"));
+	const dbLastUpdated = eventsMetaSnapshot.data().lastUpdated.seconds;
+
+	// Load events from database
+	if (!localLastUpdated || localLastUpdated != dbLastUpdated) {
+		console.log("Getting events from server");
+
+		querySnapshot.forEach((doc) => {
+			eventsArr.push(doc.data());
+		});
+
+		window.localStorage.setItem("events", JSON.stringify(eventsArr));
+		window.localStorage.setItem("lastUpdated", dbLastUpdated.toString());
+	}
+	// Load events from local storage
+	else {
+		console.log("Getting events from local storage");
+		eventsArr = JSON.parse(window.localStorage.getItem("events"));
+	}
 
 	loadEventsFromJSON(eventsArr);
 });
