@@ -7,38 +7,38 @@
       "**/node_modules/**"
     ],
     "redirects":[{
-      "source":"/:addgooglereview",
-      "destination":"/:addgooglereview.html",
+      "source":"/addgooglereview",
+      "destination":"/addgooglereview.html",
       "type":301
     },
     {
-      "source":"/:contact",
-      "destination":"/:contact.html",
+      "source":"/contact",
+      "destination":"/contact.html",
       "type":301
     },
     {
-      "source":"/:events",
-      "destination":"/:events.html",
+      "source":"/events",
+      "destination":"/events.html",
       "type":301
     },
     {
-      "source":"/:gallery",
-      "destination":"/:gallery.html",
+      "source":"/gallery",
+      "destination":"/gallery.html",
       "type":301
     },
     {
-      "source":"/:home",
-      "destination":"/:index.html",
+      "source":"/home",
+      "destination":"/",
       "type":301
     },
     {
-      "source":"/:movie",
-      "destination":"/:movie.html",
+      "source":"/movie",
+      "destination":"/movie.html",
       "type":301
     },
     {
-      "source":"/:music",
-      "destination":"/:music.html",
+      "source":"/music",
+      "destination":"/music.html",
       "type":301
     }]
   }
