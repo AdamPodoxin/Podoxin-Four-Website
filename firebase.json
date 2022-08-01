@@ -8,7 +8,7 @@
     ],
     "redirects":[{
       "source":"/:page",
-      "destination":"/html/:page.html",
+      "destination":"/:page.html",
       "type":301
     }]
   }
