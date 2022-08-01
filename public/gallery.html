@@ -1,78 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Gallery - Podoxin Four</title>
 
-		<link
-			rel="stylesheet"
-			type="text/css"
-			media="screen"
-			href="../css/index.css"
-		/>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			media="screen"
-			href="../css/gallery.css"
-		/>
+<head>
+	<title>Gallery - Podoxin Four</title>
 
-		<link rel="shortcut icon" href="../img/favicon.png" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/gallery.css" />
 
-		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-		<script type="module" src="../js/gallery.js"></script>
-		<script type="text/javascript" src="../js/index.js"></script>
+	<link rel="shortcut icon" href="img/favicon.png" />
 
-		<meta charset="utf-8" />
-		<meta property="og:type" content="Music Band" />
-		<meta property="og:image" content="../img/favicon.png" />
-		<meta property="og:image:type" content="image/png" />
-		<meta property="og:image:width" content="512" />
-		<meta property="og:image:height" content="512" />
-		<meta name="Description" content="Smooth funk jazz quartet" />
-	</head>
-	<body>
-		<div id="navbar">
-			<a href="../index.html">HOME</a>
-			<a href="movie.html">MOVIE</a>
-			<a href="music.html">MUSIC</a>
-			<a href="gallery.html" id="current-page">GALLERY</a>
-			<a href="events.html">EVENTS</a>
-			<a href="contact.html">CONTACT</a>
-		</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="module" src="js/gallery.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
 
-		<img src="../img/navbar.png" id="navbar-button" />
+	<meta charset="utf-8" />
+	<meta property="og:type" content="Music Band" />
+	<meta property="og:image" content="img/favicon.png" />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="512" />
+	<meta property="og:image:height" content="512" />
+	<meta name="Description" content="Smooth funk jazz quartet" />
+</head>
+
+<body>
+	<div id="navbar">
+		<a href="index.html">HOME</a>
+		<a href="movie.html">MOVIE</a>
+		<a href="music.html">MUSIC</a>
+		<a href="gallery.html" id="current-page">GALLERY</a>
+		<a href="events.html">EVENTS</a>
+		<a href="contact.html">CONTACT</a>
+	</div>
+
+	<img src="img/navbar.png" id="navbar-button" />
+
+	<br />
+
+	<span id="navbar-spacer"></span>
+
+	<h1 id="page-title">Gallery</h1>
+
+	<center>
+		<span id="modalbg">
+			<img src="img/modal/close.png" width="40px" height="40px" id="close" />
+			<img src="img/modal/prev.png" width="40px" height="40px" id="prev" />
+			<img src="img/modal/next.png" width="40px" height="40px" id="next" />
+		</span>
+
+		<img id="modal" />
+
+		<img src="img/Loading.gif" width="32px" height="32px" id="loading-indicator" />
+		<div id="gallery"></div>
 
 		<br />
 
-		<span id="navbar-spacer"></span>
+		<a href="#navbar" id="about" class="hyperlink">Back to top</a>
+	</center>
+</body>
 
-		<h1 id="page-title">Gallery</h1>
-
-		<center>
-			<span id="modalbg">
-				<img
-					src="../img/modal/close.png"
-					width="40px"
-					height="40px"
-					id="close"
-				/>
-				<img src="../img/modal/prev.png" width="40px" height="40px" id="prev" />
-				<img src="../img/modal/next.png" width="40px" height="40px" id="next" />
-			</span>
-
-			<img id="modal" />
-
-			<img
-				src="../img/Loading.gif"
-				width="32px"
-				height="32px"
-				id="loading-indicator"
-			/>
-			<div id="gallery"></div>
-
-			<br />
-
-			<a href="#navbar" id="about" class="hyperlink">Back to top</a>
-		</center>
-	</body>
 </html>
