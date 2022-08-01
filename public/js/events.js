@@ -68,6 +68,22 @@ function loadEventsFromJSON(eventsArr) {
 	$("#loading-indicator").css("display", "none");
 }
 
+function OpenModal(src) {
+	if (windowWidth >= 1280) {
+		$("#modal").attr(
+			"src",
+			"https://www.youtube.com/embed/" +
+				src +
+				"?rel=0&enablejsapi=1&version=3&playerapiid=ytplayer"
+		);
+
+		$("#modal").css("display", "block");
+		$("#modalbg").css("display", "block");
+	} else {
+		window.location = "https://youtube.com/watch?v=" + src;
+	}
+}
+
 function createEventFromJSON(eventData) {
 	const dateHTML = "<td>" + eventData.date + "</td>";
 
@@ -90,7 +106,7 @@ function createEventFromJSON(eventData) {
 	if (eventData.ytId != "") {
 		const modalId = '"' + eventData.ytId + '"';
 		ytHTML =
-			"<td><img src='../img/yt_icon_rgb.png' width='46px' height='32px' onclick='OpenModal(" +
+			"<td><img src='img/yt_icon_rgb.png' width='46px' height='32px' onclick='OpenModal(" +
 			modalId +
 			")' title='Click to view video'></td>";
 	}
@@ -98,22 +114,6 @@ function createEventFromJSON(eventData) {
 	const final = "<tr>" + dateHTML + venueHTML + ytHTML + "</tr>";
 
 	return final;
-}
-
-function OpenModal(src) {
-	if (windowWidth >= 1280) {
-		$("#modal").attr(
-			"src",
-			"https://www.youtube.com/embed/" +
-				src +
-				"?rel=0&enablejsapi=1&version=3&playerapiid=ytplayer"
-		);
-
-		$("#modal").css("display", "block");
-		$("#modalbg").css("display", "block");
-	} else {
-		window.location = "https://youtube.com/watch?v=" + src;
-	}
 }
 
 function CloseModal() {

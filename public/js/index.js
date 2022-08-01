@@ -4,8 +4,8 @@ var closePath = "img/modal/close.png";
 var isNavbarOpen = false;
 
 if (!document.title.includes("Home")) {
-	openPath = "../img/navbar.png";
-	closePath = "../img/modal/close.png";
+	openPath = "img/navbar.png";
+	closePath = "img/modal/close.png";
 }
 
 function OpenNavbar() {
