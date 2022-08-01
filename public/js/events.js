@@ -104,11 +104,7 @@ function createEventFromJSON(eventData) {
 	var ytHTML = "";
 
 	if (eventData.ytId != "") {
-		const modalId = '"' + eventData.ytId + '"';
-		ytHTML =
-			"<td><img src='img/yt_icon_rgb.png' width='46px' height='32px' onclick='OpenModal(" +
-			modalId +
-			")' title='Click to view video'></td>";
+		ytHTML = `<td><a href='https://youtube.com/watch?v=${eventData.ytId}' target='_blank'><img src='img/yt_icon_rgb.png' width='46px' height='32px' title='Click to view video'></a></td>`;
 	}
 
 	const final = "<tr>" + dateHTML + venueHTML + ytHTML + "</tr>";
