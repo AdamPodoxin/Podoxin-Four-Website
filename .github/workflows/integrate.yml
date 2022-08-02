@@ -2,10 +2,14 @@ name: Test
 
 on:
   push:
-    branches: [github-actions]
+    branches: [github-actions, master]
 
 jobs:
-  test_push:
+  firebase_deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: echo test
+      - uses: w9jds/firebase-action@master
+        with:
+          args: deploy
+        env:
+          FIREBASE_TOKEN: ${{secrets.FIREBASE_TOKEN}}
