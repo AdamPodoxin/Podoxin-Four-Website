@@ -5,41 +5,6 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "redirects":[{
-      "source":"/addgooglereview",
-      "destination":"/addgooglereview.html",
-      "type":301
-    },
-    {
-      "source":"/contact",
-      "destination":"/contact.html",
-      "type":301
-    },
-    {
-      "source":"/events",
-      "destination":"/events.html",
-      "type":301
-    },
-    {
-      "source":"/gallery",
-      "destination":"/gallery.html",
-      "type":301
-    },
-    {
-      "source":"/home",
-      "destination":"/",
-      "type":301
-    },
-    {
-      "source":"/movie",
-      "destination":"/movie.html",
-      "type":301
-    },
-    {
-      "source":"/music",
-      "destination":"/music.html",
-      "type":301
-    }]
+    ]
   }
 }
