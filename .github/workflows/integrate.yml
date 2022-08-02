@@ -8,4 +8,4 @@ jobs:
   test_push:
     runs-on: ubuntu-latest
     steps:
-      - echo test
+      - run: echo test
