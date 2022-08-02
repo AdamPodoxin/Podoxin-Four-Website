@@ -1,0 +1,11 @@
+name: Test
+
+on:
+  push
+    branches: [github-actions]
+
+jobs:
+  test_push:
+    runs-on: ubuntu-latest
+    steps:
+      - echo test
