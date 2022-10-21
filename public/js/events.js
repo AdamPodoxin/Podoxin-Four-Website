@@ -1,41 +1,35 @@
-// $(document).ready(async function () {
-// 	let events = [];
-// 	events = await getEvents();
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+import {
+	getFirestore,
+	collection,
+	getDocs,
+} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js";
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
 
-// 	// Load events from database
-// 	// if (!localLastUpdated || localLastUpdated != dbLastUpdated) {
-// 	// 	console.log("Getting events from Firebase");
-// 	// 	events = await getEvents();
+import { firebaseConfig } from "./config.js";
 
-// 	// 	window.localStorage.setItem("events", JSON.stringify(events));
-// 	// 	window.localStorage.setItem("lastUpdated", dbLastUpdated.toString());
-// 	// }
-// 	// // Load events from local storage
-// 	// else {
-// 	// 	console.log("Getting events from local storage");
-// 	// 	events = JSON.parse(window.localStorage.getItem("events"));
-// 	// }
+const getEvents = async () => {
+	const querySnapshot = await getDocs(collection(db, "events"));
+	const events = querySnapshot.docs.map((doc) => doc.data());
 
-// 	//loadEventsFromJSON(events);
-// });
+	return events;
+};
 
-const app = Vue.createApp({
+const vueApp = Vue.createApp({
 	data() {
 		return {
+			isLoaded: false,
 			pastEvents: [],
 			upcomingEvents: [],
 		};
 	},
 	created: async function () {
 		const events = await getEvents();
-		console.log(events);
 		this.pastEvents = events.filter((e) => e.finished);
 		this.upcomingEvents = events.filter((e) => !e.finished);
+
+		this.isLoaded = true;
 	},
 });
-app.mount("#events-app");
-
-// (async () => {
-// 	const events = await getEvents();
-// 	console.log(events);
-// })();
+vueApp.mount("#events-app");

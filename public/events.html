@@ -12,8 +12,7 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-	<script type="module" src="js/api.js"></script>
-	<script src="js/events.js" defer></script>
+	<script type="module" src="js/events.js" defer></script>
 
 	<meta charset="utf-8" />
 	<meta property="og:type" content="Music Band" />
@@ -45,11 +44,11 @@
 		<br />
 		<br />
 
-		<img src="img/Loading.gif" width="32px" height="32px" id="loading-indicator" />
-		<h1 class="events-title">Upcoming Events</h1>
-		<p id="no-events">Nothing to see here... yet.</p>
-
 		<section id="events-app">
+			<img v-if="!isLoaded" src="img/Loading.gif" width="32" height="32" id="loading-indicator" />
+			<h1 class="events-title">Upcoming Events</h1>
+			<p v-if="upcomingEvents.length <= 0" id="no-events">Nothing to see here... yet.</p>
+
 			<table>
 				<thead>
 					<tr>
