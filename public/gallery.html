@@ -10,8 +10,9 @@
 	<link rel="shortcut icon" href="img/favicon.png" />
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script type="module" src="js/gallery.js"></script>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
+	<script type="module" src="js/gallery.js" defer></script>
 
 	<meta charset="utf-8" />
 	<meta property="og:type" content="Music Band" />
@@ -49,8 +50,10 @@
 
 		<img id="modal" />
 
-		<img src="img/Loading.gif" width="32px" height="32px" id="loading-indicator" />
-		<div id="gallery"></div>
+		<div id="gallery">
+			<img v-if="!isLoaded" src="img/Loading.gif" width="32" height="32" id="loading-indicator" />
+			<img v-for="(img, index) in images" :src="img" :index="index" @click="OpenModal(index)" class="photo">
+		</div>
 
 		<br />
 
