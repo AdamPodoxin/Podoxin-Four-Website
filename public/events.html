@@ -57,6 +57,10 @@
 					</tr>
 				</thead>
 				<tbody id="upcoming-events-body">
+					<tr v-for="event in upcomingEvents">
+						<td>{{event.date}}</td>
+						<td><a :href="event.venueSite" target="_blank" class="hyperlink">{{event.venue}}</a></td>
+					</tr>
 				</tbody>
 			</table>
 
