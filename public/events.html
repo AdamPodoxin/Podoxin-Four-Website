@@ -11,7 +11,9 @@
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
-	<script type="module" src="js/events.js"></script>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script type="module" src="js/api.js"></script>
+	<script src="js/events.js" defer></script>
 
 	<meta charset="utf-8" />
 	<meta property="og:type" content="Music Band" />
@@ -47,35 +49,39 @@
 		<h1 class="events-title">Upcoming Events</h1>
 		<p id="no-events">Nothing to see here... yet.</p>
 
-		<table>
-			<thead>
-				<tr>
-					<th>Date</th>
-					<th>Venue</th>
-				</tr>
-			</thead>
-			<tbody id="upcoming-events-body"></tbody>
-		</table>
+		<section id="events-app">
+			<table>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Venue</th>
+					</tr>
+				</thead>
+				<tbody id="upcoming-events-body">
+				</tbody>
+			</table>
 
-		<br />
+			<br />
 
-		<h1 class="events-title">Past Events</h1>
-		<table>
-			<thead>
-				<tr>
-					<th>Date</th>
-					<th>Venue</th>
-				</tr>
-			</thead>
-			<tbody id="past-events-body"></tbody>
-		</table>
+			<h1 class="events-title">Past Events</h1>
+			<table>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Venue</th>
+					</tr>
+				</thead>
+				<tbody id="past-events-body">
+					<tr v-for="event in pastEvents">
+						<td>{{event.date}}</td>
+						<td><a :href="event.venueSite" target="_blank" class="hyperlink">{{event.venue}}</a></td>
+						<td><a v-bind:href="https://youtube.com/v?event.ytId"><img src="img/yt_icon_rgb.png"
+									width="46px" height="32px" title="Click to view video"></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
 	</center>
-
-	<span id="modalbg">
-		<img src="img/modal/close.png" width="40px" height="40px" id="close" />
-	</span>
-
-	<iframe id="modal" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </body>
 
 </html>
