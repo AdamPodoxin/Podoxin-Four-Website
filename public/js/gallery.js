@@ -82,7 +82,7 @@ $(document).ready(function () {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const storage = getStorage(firebaseApp);
-const listRef = ref(storage, "test/");
+const listRef = ref(storage, "gallery/");
 
 const vueApp = Vue.createApp({
 	data() {
