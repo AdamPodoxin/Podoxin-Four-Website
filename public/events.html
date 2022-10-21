@@ -75,8 +75,8 @@
 					<tr v-for="event in pastEvents">
 						<td>{{event.date}}</td>
 						<td><a :href="event.venueSite" target="_blank" class="hyperlink">{{event.venue}}</a></td>
-						<td><a v-bind:href="https://youtube.com/v?event.ytId"><img src="img/yt_icon_rgb.png"
-									width="46px" height="32px" title="Click to view video"></a></td>
+						<td><a v-bind:href="event.ytId" target="_blank"><img src="img/yt_icon_rgb.png" width="46"
+									height="32" title="Click to view video"></a></td>
 					</tr>
 				</tbody>
 			</table>
