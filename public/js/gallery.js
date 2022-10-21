@@ -4,40 +4,14 @@ import {
 	getStorage,
 	ref,
 	listAll,
+	getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-storage.js";
 import { firebaseConfig } from "./config.js";
 
 let currentImgIndex = 0;
-let numImgs = 0;
+let images = [];
 
 let shouldOpenModal = false;
-
-const createImage = (url, i) => {
-	const imageElement = document.createElement("img");
-	$("#gallery").append(imageElement);
-
-	$(imageElement).attr("src", url);
-	$(imageElement).attr("class", "photo");
-	$(imageElement).attr("img-index", i);
-
-	if (window.innerWidth >= 1280)
-		$(imageElement).click(() => {
-			OpenModal(imageElement);
-		});
-};
-
-function OpenModal(image) {
-	$("#modal").css("display", "block");
-	$("#modalbg").css("display", "block");
-
-	$("#modal").attr("src", image.src);
-	currentImgIndex = parseInt($(image).attr("img-index")) - 1;
-
-	AdjustModalSize();
-	AdjustNavigationButtons();
-
-	$("html").css("overflowY", "hidden");
-}
 
 function CloseModal() {
 	$("#modal").css("display", "none");
@@ -51,13 +25,13 @@ function ChangeImage(count) {
 
 	var newImgIndex = currentImgIndex + count;
 
-	if (newImgIndex >= numImgs) {
+	if (newImgIndex >= images.length) {
 		newImgIndex = 0;
 	} else if (newImgIndex < 0) {
-		newImgIndex = numImgs - 1;
+		newImgIndex = images.length - 1;
 	}
 
-	if (newImgIndex >= 0 && newImgIndex < numImgs) {
+	if (newImgIndex >= 0 && newImgIndex < images.length) {
 		$("#modal").attr("src", gallery.children[newImgIndex].src);
 		currentImgIndex = newImgIndex;
 
@@ -104,24 +78,48 @@ $(document).ready(function () {
 			ChangeImage(1);
 		});
 	}
-
-	const app = initializeApp(firebaseConfig);
-	const storage = getStorage(app);
-	const listRef = ref(storage, "gallery/");
-
-	listAll(listRef).then((res) => {
-		numImgs = res.items.length;
-
-		for (let i = 1; i <= numImgs; i++) {
-			let imgName = `00${i}`;
-			imgName = imgName.substring(imgName.length - 3, imgName.length);
-
-			createImage(generateImageURL(imgName), i);
-		}
-
-		$("#loading-indicator").css("display", "none");
-	});
 });
+
+const firebaseApp = initializeApp(firebaseConfig);
+const storage = getStorage(firebaseApp);
+const listRef = ref(storage, "gallery/");
+
+const vueApp = Vue.createApp({
+	data() {
+		return {
+			isLoaded: false,
+			images: [],
+		};
+	},
+	methods: {
+		OpenModal(index) {
+			$("#modal").css("display", "block");
+			$("#modalbg").css("display", "block");
+
+			$("#modal").attr("src", images[index]);
+			currentImgIndex = index;
+
+			AdjustModalSize();
+			AdjustNavigationButtons();
+
+			$("html").css("overflowY", "hidden");
+		},
+	},
+	created: async function () {
+		await listAll(listRef).then((res) => {
+			res.items.forEach((itemRef) => {
+				let imgName = `00${++images.length}`;
+				imgName = imgName.substring(imgName.length - 3, imgName.length);
+				this.images.push(generateImageURL(imgName));
+			});
+		});
+
+		images = this.images;
+
+		this.isLoaded = true;
+	},
+});
+vueApp.mount("#gallery");
 
 const generateImageURL = (imgName) => {
 	return `https://firebasestorage.googleapis.com/v0/b/podoxin-four-website.appspot.com/o/gallery%2F${imgName}.jpg?alt=media`;
