@@ -5,15 +5,24 @@ const functions = require("firebase-functions");
 initializeApp();
 
 const db = getFirestore();
+const eventsDocRef = db.collection("meta").doc("events");
 
-exports.updateEventsLastUpdated = functions.firestore
-.document("events/")
-.onCreate(async (snapshot, context) => {
-	const docRef = db.collection("meta").doc("events");
-	const lastUpdated = Date.now();
-	await docRef.set({
+const updateEventsLastUpdated = async () => {
+	const dateNow = new Date(Date.now());
+	const lastUpdated = Timestamp.fromDate(dateNow);
+	console.log(`Events lastUpdated: ${dateNow}`);
+
+	return eventsDocRef.set({
 		lastUpdated
 	});
+};
 
-	console.log(`Events lastUpdated: ${lastUpdated}`);
-});
+exports.updateEventsLastUpdated = updateEventsLastUpdated;
+
+exports.onEventCreated = functions.firestore
+.document("events/{eventID}")
+.onCreate(async (snapshot, context) => updateEventsLastUpdated());
+
+exports.onEventUpdated = functions.firestore
+.document("events/{eventID}")
+.onUpdate(async (snapshot, context) => updateEventsLastUpdated());
