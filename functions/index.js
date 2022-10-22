@@ -1,9 +1,19 @@
+const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
+const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
 const functions = require("firebase-functions");
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+initializeApp();
+
+const db = getFirestore();
+
+exports.updateEventsLastUpdated = functions.firestore
+.document("events/")
+.onCreate(async (snapshot, context) => {
+	const docRef = db.collection("meta").doc("events");
+	const lastUpdated = Date.now();
+	await docRef.set({
+		lastUpdated
+	});
+
+	console.log(`Events lastUpdated: ${lastUpdated}`);
+});
