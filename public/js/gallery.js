@@ -86,7 +86,6 @@ $(document).ready(function () {
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 const storage = getStorage(firebaseApp);
-const listRef = ref(storage, "gallery/");
 
 const vueApp = Vue.createApp({
 	data() {
@@ -97,6 +96,10 @@ const vueApp = Vue.createApp({
 	},
 	methods: {
 		OpenModal(index) {
+			if (window.innerWidth < 1280) {
+				return;
+			}
+
 			$("#modal").css("display", "block");
 			$("#modalbg").css("display", "block");
 
