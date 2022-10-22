@@ -1,10 +1,13 @@
 // Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
 import {
+	getFirestore,
+	doc,
+	getDoc,
+} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js";
+import {
 	getStorage,
 	ref,
-	listAll,
-	getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-storage.js";
 import { firebaseConfig } from "./config.js";
 
@@ -81,6 +84,7 @@ $(document).ready(function () {
 });
 
 const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
 const storage = getStorage(firebaseApp);
 const listRef = ref(storage, "gallery/");
 
@@ -106,13 +110,15 @@ const vueApp = Vue.createApp({
 		},
 	},
 	created: async function () {
-		await listAll(listRef).then((res) => {
-			res.items.forEach((itemRef) => {
-				let imgName = `00${++images.length}`;
-				imgName = imgName.substring(imgName.length - 3, imgName.length);
-				this.images.push(generateImageURL(imgName));
-			});
-		});
+		const galleryMetaRef = doc(db, "meta", "gallery");
+		const galleryMetaSnapshot = await getDoc(galleryMetaRef);
+		const numImgs = galleryMetaSnapshot.data().numImgs;
+
+		for (let i = 0; i < numImgs; i++) {
+			let imgName = `00${i + 1}`;
+			imgName = imgName.substring(imgName.length - 3, imgName.length);
+			this.images.push(generateImageURL(imgName));
+		}
 
 		images = this.images;
 
