@@ -2,13 +2,7 @@
 	"hosting": {
 		"public": "public",
 		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-		"redirects": [
-			{
-				"source": "/:page",
-				"destination": "/:page.html",
-				"type": "304"
-			}
-		]
+		"cleanUrls": "true"
 	},
 	"functions": [
 		{
