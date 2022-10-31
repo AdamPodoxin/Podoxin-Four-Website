@@ -4,7 +4,7 @@
 		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
 		"redirects": [
 			{
-				"source": "/:page*/",
+				"source": "/:page",
 				"destination": "/:page.html",
 				"type": "304"
 			}
