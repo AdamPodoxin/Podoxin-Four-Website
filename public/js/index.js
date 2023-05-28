@@ -1,11 +1,11 @@
-var openPath = "img/navbar.png";
-var closePath = "img/modal/close.png";
+var openPath = "assets/img/navbar.png";
+var closePath = "assets/img/modal/close.png";
 
 var isNavbarOpen = false;
 
 if (!document.title.includes("Home")) {
-	openPath = "img/navbar.png";
-	closePath = "img/modal/close.png";
+	openPath = "assets/img/navbar.png";
+	closePath = "assets/img/modal/close.png";
 }
 
 function OpenNavbar() {
