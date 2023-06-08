@@ -1,0 +1,28 @@
+.title {
+	text-align: center;
+	color: #ddd;
+	font-size: 40px;
+}
+
+.about {
+	width: min(1120px, 90vw);
+	margin: 32px auto;
+
+	color: #aaa;
+
+	font-size: 20px;
+	text-align: justify;
+}
+
+.hyperlink {
+	color: #aaa;
+}
+
+.text {
+	margin: 40px auto;
+
+	color: #aaa;
+
+	font-size: 20px;
+	text-align: center;
+}

@@ -1,0 +1,10 @@
+#mainVideo {
+	border: 1px solid #555;
+
+	--width: min(1024px, 95vw);
+	width: var(--width);
+	height: calc(600 / 1024 * var(--width));
+
+	display: block;
+	margin: auto;
+}

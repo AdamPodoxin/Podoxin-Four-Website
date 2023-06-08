@@ -1,0 +1,12 @@
+#notFound {
+	display: block;
+
+	color: #aaa;
+	margin: 32px;
+	font-size: 20px;
+	text-align: center;
+}
+
+#notFound > a {
+	color: inherit;
+}

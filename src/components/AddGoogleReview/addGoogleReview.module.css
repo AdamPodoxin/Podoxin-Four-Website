@@ -1,0 +1,13 @@
+.googleReviewButton {
+	display: block;
+	text-align: center;
+}
+
+.googleReviewButton > a {
+	color: white;
+	font-size: 18px;
+	text-decoration: none;
+	background-image: linear-gradient(#4b84ed, #124299);
+	padding: 10px 16px;
+	border-radius: 6px;
+}

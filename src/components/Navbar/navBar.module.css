@@ -1,0 +1,93 @@
+#navbar {
+	width: auto;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	background-color: #222;
+}
+
+.navItem {
+	color: white;
+	text-decoration: none;
+
+	font-size: 20px;
+
+	margin: 16px 16px;
+}
+
+.navItem:hover,
+.navItem:active {
+	color: #ddd;
+}
+
+#active {
+	text-decoration: underline;
+}
+
+#navbarToggle,
+#hamburgerMenu {
+	display: none;
+}
+
+@media (max-width: 768px) {
+	#navbarWrapper {
+		position: absolute;
+		top: 0;
+
+		width: 100vw;
+		height: 100vh;
+
+		pointer-events: none;
+	}
+
+	#navbar {
+		width: 100%;
+
+		flex-direction: column;
+		justify-content: flex-start;
+
+		padding-top: 16px;
+
+		pointer-events: all;
+		overflow: hidden;
+	}
+
+	#navbarToggle {
+		position: absolute;
+		top: 8px;
+		left: 8px;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		z-index: 100;
+		pointer-events: all;
+		opacity: 0;
+	}
+
+	#hamburgerMenu {
+		position: absolute;
+		top: 8px;
+		left: 8px;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#navbarToggle:checked ~ nav {
+		height: 100%;
+		transition: height 0.3s ease-out;
+		visibility: visible;
+	}
+
+	#navbarToggle:not(:checked) ~ nav {
+		height: 0%;
+		visibility: hidden;
+		transition: height 0.3s ease-out, visibility 0s linear 0.3s;
+	}
+}
