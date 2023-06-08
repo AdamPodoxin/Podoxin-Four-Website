@@ -1,0 +1,21 @@
+.eventsTable {
+	margin: 16px auto;
+	padding: 8px;
+	text-align: left;
+}
+
+.header {
+	font-size: 26px;
+	color: #ddd;
+	padding: 12px;
+}
+
+.cell {
+	font-size: 20px;
+	color: #aaa;
+	padding: 16px 12px;
+}
+
+.cell > a {
+	color: #aaa;
+}

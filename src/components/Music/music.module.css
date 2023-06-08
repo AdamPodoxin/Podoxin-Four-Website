@@ -1,0 +1,15 @@
+#musicGrid {
+	width: auto;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.video {
+	--width: min(560px, 95vw);
+	width: var(--width);
+	height: calc(315 / 560 * var(--width));
+	margin: 24px;
+
+	border: 1px solid #555555;
+}
