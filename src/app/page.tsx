@@ -11,7 +11,7 @@ const Home = () => {
 	return (
 		<>
 			<Title>Podoxin Four</Title>
-			<MainVideo src="https://www.youtube.com/embed/PHn9-E8B9U4?rel=0" />
+			<MainVideo src="https://www.youtube.com/embed/YWs4NKtPdBs?rel=0" />
 			<About>
 				<i>Podoxin Four</i> is a music band that plays smooth funk-jazz
 				compositions. The band was formed in 2017 in Vancouver, BC, Canada by
