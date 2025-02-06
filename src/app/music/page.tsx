@@ -1,18 +1,13 @@
+import { Metadata } from "next";
 import MusicGrid from "@/components/Music";
 import { Title } from "@/components/Typography";
-import { getMusic } from "@/lib/api/music";
-import { monthToSeconds } from "@/lib/constants";
-import { Metadata } from "next";
+import { music } from "@/lib/music";
 
 export const metadata: Metadata = {
 	title: "Music",
 };
 
-export const revalidate = monthToSeconds;
-
 const Music = async () => {
-	const music = await getMusic();
-
 	return (
 		<>
 			<Title>Music</Title>

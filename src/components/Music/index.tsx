@@ -1,4 +1,3 @@
-import { MusicType } from "@/lib/api/music";
 import styles from "./music.module.css";
 
 const Video = ({ embedLink }: { embedLink: string }) => (
@@ -10,10 +9,10 @@ const Video = ({ embedLink }: { embedLink: string }) => (
 	/>
 );
 
-const MusicGrid = ({ music }: { music: MusicType[] }) => (
+const MusicGrid = ({ music }: { music: string[] }) => (
 	<section id={styles.musicGrid}>
-		{music.map((music) => (
-			<Video embedLink={music.embed_link} key={music.id} />
+		{music.map((embedLink, i) => (
+			<Video embedLink={embedLink} key={i} />
 		))}
 	</section>
 );
