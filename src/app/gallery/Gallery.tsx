@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect } from "react";
@@ -22,7 +23,7 @@ const GalleryContent = ({ images }: { images: string[] }) => {
 
 	useEffect(() => {
 		setImages(images);
-	}, []);
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	return (
 		<>
@@ -45,6 +46,7 @@ const GalleryContent = ({ images }: { images: string[] }) => {
 					</div>
 					<img
 						src={images[currentImageIndex]}
+						alt=""
 						id={styles.modalImage}
 						onClick={(event) => event.stopPropagation()}
 					/>
