@@ -1,4 +1,4 @@
-type Event = {
+export type Event = {
 	venue: string;
 	venue_website: string | null;
 	date: string;
