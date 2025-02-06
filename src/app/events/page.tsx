@@ -1,17 +1,13 @@
+import { Metadata } from "next";
 import { EventTable } from "@/components/Events";
 import { Text, Title } from "@/components/Typography";
-import { getEvents } from "@/lib/api/events";
-import { dayToSeconds } from "@/lib/constants";
-import { Metadata } from "next";
+import { events } from "@/lib/events";
 
 export const metadata: Metadata = {
 	title: "Events",
 };
 
-export const revalidate = dayToSeconds;
-
 const Events = async () => {
-	const events = await getEvents();
 	const pastEvents = events.filter((event) => event.is_finished);
 	const upcomingEvents = events.filter((event) => !event.is_finished);
 

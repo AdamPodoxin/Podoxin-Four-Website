@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useGallery } from "@/app/gallery/GalleryContext";
 import styles from "./gallery.module.css";
 import useIsMobile from "@/lib/hooks/useIsMobile";
@@ -13,7 +14,13 @@ const GalleryImage = ({
 	openModal: () => void;
 }) => (
 	<span className={styles.galleryImage}>
-		<img src={image} onClick={isMobile ? undefined : () => openModal()} />
+		<Image
+			src={image}
+			alt=""
+			width={600}
+			height={600}
+			onClick={isMobile ? undefined : () => openModal()}
+		/>
 	</span>
 );
 

@@ -1,9 +1,9 @@
-import { EventType as Event } from "@/lib/api/events";
-import styles from "./events.module.css";
-import { montserrat, oswald } from "@/lib/fonts";
 import { ReactNode } from "react";
 import Image from "next/image";
 import youtubeIcon from "public/assets/img/youtube.png";
+import { montserrat, oswald } from "@/lib/fonts";
+import { Event } from "@/lib/events";
+import styles from "./events.module.css";
 
 const Header = ({ children }: { children: ReactNode }) => {
 	return <th className={`${styles.header} ${oswald.className}`}>{children}</th>;
@@ -45,7 +45,7 @@ const Row = ({ event }: { event: Event }) => {
 };
 
 export const EventTable = ({ events }: { events: Event[] }) => {
-	const rows = events.map((event) => <Row event={event} key={event.id} />);
+	const rows = events.map((event, i) => <Row event={event} key={i} />);
 	return (
 		<table className={styles.eventsTable}>
 			<thead>

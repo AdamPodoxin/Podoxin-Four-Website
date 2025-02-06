@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import { getImages } from "@/lib/api/gallery";
 import { Title } from "@/components/Typography";
+import { images } from "@/lib/images";
 import Gallery from "./Gallery";
 
 export const metadata: Metadata = {
@@ -8,8 +8,6 @@ export const metadata: Metadata = {
 };
 
 const GalleryWrapper = async () => {
-	const images = await getImages();
-
 	return (
 		<>
 			<Title>Gallery</Title>
