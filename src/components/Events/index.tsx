@@ -45,7 +45,7 @@ const Row = ({ event }: { event: Event }) => {
 };
 
 export const EventTable = ({ events }: { events: Event[] }) => {
-	const rows = events.map((event) => <Row event={event} key={event.id} />);
+	const rows = events.map((event, i) => <Row event={event} key={i} />);
 	return (
 		<table className={styles.eventsTable}>
 			<thead>
