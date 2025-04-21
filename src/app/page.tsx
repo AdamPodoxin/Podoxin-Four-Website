@@ -15,10 +15,10 @@ const Home = () => {
 			<About>
 				<i>Podoxin Four</i> is a music band that plays smooth funk-jazz
 				compositions. The band was formed in 2017 in Vancouver, BC, Canada by
-				Stan (Stas) Podoxin. The uniqueness of the band is that the players are
+				Stas Podoxin. The uniqueness of the band is that the players are
 				all members of the Podoxin family. As of the time of this website&apos;s
 				launch, Adam (15) is playing drums, Gabriel (12) on the saxophone, and
-				Leo (10) on the keyboard. Their father, Stan, is the bass player and the
+				Leo (10) on the keyboard. Their father, Stas, is the bass player and the
 				band&apos;s leader.
 			</About>
 			<About>
@@ -26,8 +26,8 @@ const Home = () => {
 				Washington, Stevie Wonder, Antonio Carlos Jobim, Lee Ritenour, George
 				Benson, Al Jarreau, Shakatak, Mezzoforte, and many others. So far, the
 				band is mainly playing covers, but also has its own original
-				compositions, such as <i>Let&apos;s Funk Up</i> written by Leo and Stan
-				and <i>In the Smooth Mood</i> written by Stan. Recently, the band has
+				compositions, such as <i>Let&apos;s Funk Up</i> written by Leo and Stas
+				and <i>In the Smooth Mood</i> written by Stas. In 2018, the band has
 				recorded some of its pieces at a professional sound recording studio.
 				The result is presented on this website on the{" "}
 				<Hyperlink href="/music">
