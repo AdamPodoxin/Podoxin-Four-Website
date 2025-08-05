@@ -13,7 +13,7 @@ const Home = () => {
 			<Title>Podoxin Four</Title>
 			<MainVideo src="https://www.youtube.com/embed/YWs4NKtPdBs?rel=0" />
 			<About>
-				<i>Podoxin Four</i> is a music band that plays smooth funk-jazz
+				<i>Podoxin Four</i> is a musical band that plays smooth funk-jazz
 				compositions. The band was formed in 2017 in Vancouver, BC, Canada by
 				Stas Podoxin. The uniqueness of the band is that the players are
 				all members of the Podoxin family. As of the time of this website&apos;s
