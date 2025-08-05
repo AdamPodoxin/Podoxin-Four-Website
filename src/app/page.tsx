@@ -20,7 +20,7 @@ const Home = () => {
 			</About>
 
 			<About>
-				In 2018, the band recorded several tracks professionally. Originals include Let’s Funk Up (written by Leo and Stas) and In the Smooth Mood (written by Stas). You can find these and more on the{" "}
+				In 2018, the band recorded several tracks professionally. Originals include <i>Let's Funk Up</i> (written by Leo and Stas) and <i>In the Smooth Mood</i> (written by Stas). You can find these and more on the{" "}
 				<Hyperlink href="/music">
 					<i>Music</i>
 				</Hyperlink>{" "}
